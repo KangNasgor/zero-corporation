@@ -13,8 +13,12 @@
 </head>
 
 <body class="bg-slate-900">
-    <nav>
-        <p class="text-white text-2xl p-4">Icikiwir</p>
+    <nav class="flex items-center bg-slate-700 mb-5">
+        <a class="text-white w-fit text-2xl p-4" href="{{route('home')}}">ZERO</a>
+        <a class="text-slate-300 w-fit text-lg p-4" href="{{route('products')}}">Products</a>
+        <a class="text-slate-300 w-fit text-lg p-4" href="{{route('employee')}}">Employee</a>
+        <a class="text-slate-300 w-fit text-lg p-4" href="{{route('products')}}">Products</a>
+        <a class="text-slate-300 w-fit text-lg p-4" href="{{route('products')}}">Products</a>
     </nav>
     <div class="">
         @yield('layout')

@@ -37,6 +37,19 @@ class ProductsController extends Controller
         ]);
         return redirect()->route('products');
     }
+    public function updateView(Request $req, int $id): View{
+        $products = Products::where('id', $id)->first();
+        return view('product.update', compact('products'));
+    }
+    public function update(Request $req, int $id){
+        $products = Products::where('id', $id)->first();
+        $products->update([
+            'name' => $req->input('name'),
+            'price' => $req->input('price'),
+            'status' => $req->input('status'),
+        ]);
+        return redirect()->route('products', $products->id);
+    }
     public function api()
     {
         $products = Products::where('status', 'active')->get();
