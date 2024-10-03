@@ -51,14 +51,14 @@
                                         </button>
                                     </a>
                                     <a>
-                                        <button class="bg-red-600 py-2 px-3 rounded-md" id="delete-button">
+                                        <button class="bg-red-600 py-2 px-3 rounded-md delete-button" data-id="{{ $prod->id }}">
                                             Delete
                                         </button>
-                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" id="modal">
+                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal" id="modal-{{ $prod->id }}">
                                             <div class="h-1/4 w-1/4 p-5 bg-slate-500 rounded-md">
                                                 <div class="flex items-center justify-between">
-                                                    <h1 class="text-xl">Delete this item?</h1>
-                                                    <div class="flex flex-col gap-px cursor-pointer p-1" id="close-modal">
+                                                    <h1 class="text-xl">Delete "{{ $prod->name }}"?</h1>
+                                                    <div class="flex flex-col gap-px cursor-pointer p-1 close-modal" data-id="{{ $prod->id }}">
                                                         <div class="bg-slate-800 h-px w-3 -rotate-45 translate-y-px"></div>
                                                         <div class="bg-slate-800 h-px w-3 rotate-45 -translate-y-px"></div>
                                                     </div>
@@ -85,18 +85,25 @@
         </div>
     </div>
     <script>
-        var modalButton = document.getElementById("delete-button");
-        var modal = document.getElementById("modal");
-        var closeModal = document.getElementById("close-modal");
-        modalButton.onclick = function(){
-            modal.style.display = "flex";
-        }
-        closeModal.onclick = function(){
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
+        let deleteButton = document.querySelectorAll(".delete-button");
+        let closeModal = document.querySelectorAll(".close-modal");
+        deleteButton.forEach(button => {
+            button.onclick = function(){
+                let id = this.getAttribute('data-id'); 
+                let modal = document.getElementById('modal-' + id)
+                modal.style.display = "flex";
+            }
+        });
+        closeModal.forEach(button => {
+            button.onclick = function(){
+                let id = this.getAttribute('data-id');
+                let modal = document.getElementById("modal-" + id);
                 modal.style.display = "none";
+            }
+        })
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
             }
         }
     </script>
