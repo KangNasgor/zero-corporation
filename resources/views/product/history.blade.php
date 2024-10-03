@@ -53,9 +53,14 @@
                                         </button>
                                     </form>
                                     <a>
-                                        <button class="bg-red-600 py-2 px-3 rounded-md">
+                                        <button class="bg-red-600 py-2 px-3 rounded-md delete-button" data-id="{{ $prod->id }}">
                                             Delete
                                         </button>
+                                        <div class="bg-black/75 w-full h-full hidden fixed justify-center items-center left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal" id="modal-{{ $prod->id }}">
+                                            <div class="w-1/4 h-1/4 bg-slate-500 rounded-md">
+                                                Delete "{{ $prod->id }}" permanently?
+                                            </div>
+                                        </div>
                                     </a>
                                 </td>
                             </tr>
@@ -65,4 +70,20 @@
             </table>
         </div>
     </div>
+    <script>
+        let deleteButton = document.querySelectorAll(".delete-button");
+        deleteButton.forEach(button => {
+            button.onclick = function(){
+                let id = this.getAttribute('data-id');
+                let modal = document.getElementById('modal-' + id);
+                modal.style.display = "flex";
+                console.log("modal showed");
+            }
+        });
+        window.onclick = function(event){
+            if(event.target.classList.contains("modal")){
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 @endsection

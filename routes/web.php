@@ -16,6 +16,7 @@ Route::controller(ProductsController::class)->group(function(){
     Route::get('/products/history', 'history')->name('products.history');
     Route::put('/products/softdel/{id}', 'softdelete')->name('products.softdelete');
     Route::put('/products/restore/{id}', 'restore')->name('products.restore');
+    Route::delete('/products/delete/{id}', 'delete')->name('products.delete');
 });
 Route::controller(EmployeeController::class)->group(function(){
     Route::get('/employee', 'employee')->name('employee');

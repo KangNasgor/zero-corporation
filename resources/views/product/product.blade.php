@@ -24,7 +24,7 @@
             <table class="table-auto border-collapse w-full rounded-md text-sm bg-slate-800 text-slate-200">
                 <thead>
                     <tr>
-                        <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">No</th>
+                        <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">ID</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Name</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Price</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Status</th>
@@ -51,11 +51,10 @@
                                         </button>
                                     </a>
                                     <a>
-                                        <button class="bg-red-600 py-2 px-3 rounded-md delete-button"
-                                            data-id="{{ $prod->id }}">
+                                        <button class="bg-red-600 py-2 px-3 rounded-md delete-button" data-id="{{ $prod->id }}">
                                             Delete
                                         </button>
-                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal"
+                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
                                             id="modal-{{ $prod->id }}">
                                             <div class="h-1/4 w-1/4 p-5 flex flex-col justify-between bg-slate-500 rounded-md">
                                                 <div class="flex items-center justify-between">

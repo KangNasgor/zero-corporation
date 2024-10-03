@@ -71,6 +71,12 @@ class ProductsController extends Controller
         ]);
         return redirect()->route('products');
     }
+    public function delete(int $id){
+        $products = Products::where('id', $id)->first();
+        $products->delete();
+
+        return redirect()->route('products.history');
+    }
     public function restore(int $id){
         $products = Products::where('id', $id)->first();
         $products->update([
