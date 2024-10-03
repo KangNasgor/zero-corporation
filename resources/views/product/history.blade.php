@@ -57,8 +57,27 @@
                                             Delete
                                         </button>
                                         <div class="bg-black/75 w-full h-full hidden fixed justify-center items-center left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal" id="modal-{{ $prod->id }}">
-                                            <div class="w-1/4 h-1/4 bg-slate-500 rounded-md">
-                                                Delete "{{ $prod->id }}" permanently?
+                                            <div class="w-1/4 h-1/4 flex flex-col justify-between bg-slate-500 rounded-md p-5">
+                                                <div class="flex justify-between items-center">
+                                                    <h1 class="text-md w-fit">Delete "{{ $prod->name }}" permanently?</h1>
+                                                    <div class="flex flex-col gap-px cursor-pointer p-1 close-modal" data-id="{{ $prod->id }}">
+                                                        <div class="bg-slate-800 h-px w-3 -rotate-45 translate-y-px"></div>
+                                                        <div class="bg-slate-800 h-px w-3 rotate-45 -translate-y-px"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex gap-2">
+                                                    <form action="{{ route('products.delete', $prod->id) }}"
+                                                        method="POST" class="w-fit bg-red-600 p-2 rounded-md">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                    <button class="w-fit bg-teal-400 text-black p-2 rounded-md close-modal" data-id="{{ $prod->id }}">
+                                                        Cancel
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -72,12 +91,20 @@
     </div>
     <script>
         let deleteButton = document.querySelectorAll(".delete-button");
+        let closeModal = document.querySelectorAll(".close-modal");
         deleteButton.forEach(button => {
             button.onclick = function(){
                 let id = this.getAttribute('data-id');
                 let modal = document.getElementById('modal-' + id);
                 modal.style.display = "flex";
                 console.log("modal showed");
+            }
+        });
+        closeModal.forEach(button => {
+            button.onclick = function(){
+                let id = this.getAttribute('data-id');
+                let modal = document.getElementById('modal-' + id);
+                modal.style.display = "none";
             }
         });
         window.onclick = function(event){
