@@ -14,7 +14,8 @@ Route::controller(ProductsController::class)->group(function(){
     Route::get('/products/edit/{id}', 'updateView')->name('products.editpage');
     Route::put('/products/edit/update/{id}', 'update')->name('products.edit');
     Route::get('/products/history', 'history')->name('products.history');
-    Route::put('/products/softdel', 'softdelete')->name('products.softdelete');
+    Route::put('/products/softdel/{id}', 'softdelete')->name('products.softdelete');
+    Route::put('/products/restore/{id}', 'restore')->name('products.restore');
 });
 Route::controller(EmployeeController::class)->group(function(){
     Route::get('/employee', 'employee')->name('employee');

@@ -71,6 +71,13 @@ class ProductsController extends Controller
         ]);
         return redirect()->route('products');
     }
+    public function restore(int $id){
+        $products = Products::where('id', $id)->first();
+        $products->update([
+            'status' => 'active',
+        ]);
+        return redirect()->route('products');
+    }
     public function api()
     {
         $products = Products::where('status', 'active')->get();

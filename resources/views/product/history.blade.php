@@ -44,12 +44,14 @@
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">
                                     Rp.{{ number_format($prod->price, 2, ',', '.') }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $prod->status }}</td>
-                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-200">
-                                    <a href="{{ route('products.editpage', $prod->id) }}">
+                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-200 flex gap-2 w-fit">
+                                    <form class="w-fit" action="{{ route('products.restore', $prod->id) }}" method="POST">
+                                        @method('PUT')
+                                        @csrf
                                         <button class="bg-teal-300 text-black py-2 px-3 rounded-md">
-                                            Edit
+                                            Restore
                                         </button>
-                                    </a>
+                                    </form>
                                     <a>
                                         <button class="bg-red-600 py-2 px-3 rounded-md">
                                             Delete
