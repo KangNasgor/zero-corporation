@@ -10,9 +10,9 @@
                             Create
                         </button>
                     </a>
-                    <a href="{{ route('products.history') }}">
+                    <a href="{{ route('products') }}">
                         <button class="text-white bg-slate-600 py-2 px-3 rounded-md">
-                            History
+                            Home
                         </button>
                     </a>
                 </div>
@@ -51,30 +51,9 @@
                                         </button>
                                     </a>
                                     <a>
-                                        <button class="bg-red-600 py-2 px-3 rounded-md" id="delete-button">
+                                        <button class="bg-red-600 py-2 px-3 rounded-md">
                                             Delete
                                         </button>
-                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" id="modal">
-                                            <div class="h-1/4 w-1/4 p-5 bg-slate-500 rounded-md">
-                                                <div class="flex items-center justify-between">
-                                                    <h1 class="text-xl">Delete this item?</h1>
-                                                    <div class="flex flex-col gap-px cursor-pointer p-1" id="close-modal">
-                                                        <div class="bg-slate-800 h-px w-3 -rotate-45 translate-y-px"></div>
-                                                        <div class="bg-slate-800 h-px w-3 rotate-45 -translate-y-px"></div>
-                                                    </div>
-                                                </div>
-                                                <form action="{{ route('products.softdelete', $prod->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit">
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                                <button>
-                                                    Cancel
-                                                </button>
-                                            </div>
-                                        </div>
                                     </a>
                                 </td>
                             </tr>
@@ -84,20 +63,4 @@
             </table>
         </div>
     </div>
-    <script>
-        var modalButton = document.getElementById("delete-button");
-        var modal = document.getElementById("modal");
-        var closeModal = document.getElementById("close-modal");
-        modalButton.onclick = function(){
-            modal.style.display = "flex";
-        }
-        closeModal.onclick = function(){
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 @endsection

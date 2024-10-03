@@ -50,6 +50,27 @@ class ProductsController extends Controller
         ]);
         return redirect()->route('products', $products->id);
     }
+    public function history(Request $req): View
+    {
+        $search = $req->input('search');
+
+        if ($search) {
+            $products = Products::where('name', 'like', '%' . $search . '%')
+                ->orWhere('price', 'like', '%' . $search . '%')
+                ->orWhere('status', 'like', '%' . $search . '%')
+                ->get();
+        } else {
+            $products = Products::where('status', 'unactive')->get();
+        }
+        return view('product/history', compact('products', 'search'));
+    }
+    public function softdelete(int $id){
+        $products = Products::where('id', $id)->first();
+        $products->update([
+            'status' => 'unactive',
+        ]);
+        return redirect()->route('products');
+    }
     public function api()
     {
         $products = Products::where('status', 'active')->get();

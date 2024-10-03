@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body class="bg-slate-900">
@@ -26,3 +27,4 @@
 </body>
 
 </html>
+
