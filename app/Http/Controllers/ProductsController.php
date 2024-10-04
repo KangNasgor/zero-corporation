@@ -6,6 +6,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -74,6 +75,7 @@ class ProductsController extends Controller
     public function delete(int $id){
         $products = Products::where('id', $id)->first();
         $products->delete();
+        DB::statement('ALTER TABLE products AUTO_INCREMENT = ' . $id);
 
         return redirect()->route('products.history');
     }
