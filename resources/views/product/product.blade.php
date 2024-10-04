@@ -65,7 +65,7 @@
                                                         <div class="bg-slate-800 h-px w-3 rotate-45 -translate-y-px"></div>
                                                     </div>
                                                 </div>
-                                                <div class="flex gap-2">
+                                                <div class="flex gap-2 w-full justify-evenly">
                                                     <form action="{{ route('products.softdelete', $prod->id) }}"
                                                         method="POST" class="w-fit bg-red-600 p-2 rounded-md">
                                                         @csrf
