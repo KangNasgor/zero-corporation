@@ -75,7 +75,8 @@ class ProductsController extends Controller
     public function delete(int $id){
         $products = Products::where('id', $id)->first();
         $products->delete();
-        DB::statement('ALTER TABLE products AUTO_INCREMENT = ' . $id);
+        $maxId = Products::max('id');
+        DB::statement('ALTER TABLE products AUTO_INCREMENT = ' . $maxId + 1);
 
         return redirect()->route('products.history');
     }
