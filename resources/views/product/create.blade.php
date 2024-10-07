@@ -7,11 +7,11 @@
             @csrf
             <div class="flex gap-3">
                 <label class="text-white text-xl">Name</label>
-                <input name="name" placeholder="Name" required class="rounded-md p-2">
+                <input name="name" type="text" placeholder="Name" required class="rounded-md p-2">
             </div>
             <div class="flex gap-6">
                 <label class="text-white text-xl">Price</label>
-                <input name="price" placeholder="Name" required class="rounded-md p-2">
+                <input name="price" type="number" placeholder="Name" required class="rounded-md p-2">
             </div>
             <div class="flex gap-3">
                 <label class="text-white text-xl">Status</label>

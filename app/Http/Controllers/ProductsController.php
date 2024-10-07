@@ -31,12 +31,22 @@ class ProductsController extends Controller
     }
     public function create(Request $req)
     {
-        Products::create([
-            'name' => $req->input('name'),
-            'price' => $req->input('price'),
-            'status' => $req->input('status'),
+        $validate = $req->validate([
+            'name' => ['bail','required','max:15'],
+            'price' => ['bail', 'numeric'],
+            'status' => ['required']
         ]);
-        return redirect()->route('products');
+        if($validate){
+            Products::create([
+                'name' => $req->input('name'),
+                'price' => $req->input('price'),
+                'status' => $req->input('status'),
+            ]);
+            return redirect()->route('products');
+        }
+        else{
+            return view('product/create');
+        }
     }
     public function updateView(Request $req, int $id): View{
         $products = Products::where('id', $id)->first();
