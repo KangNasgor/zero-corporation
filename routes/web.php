@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Products;
 use Illuminate\Support\Facades\Route;
-Route::view('/', 'dashboard')->name('home');
+Route::get('/', [RegisterController::class, 'registerView'])->name('register');
+Route::view('/home', 'dashboard')->name('home');
 Route::controller(ProductsController::class)->group(function(){
     Route::get('/products', 'home')->name('products');
     Route::get('/productsAPI', 'api');
