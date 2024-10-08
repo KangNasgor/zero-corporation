@@ -9,7 +9,9 @@
         @vite('resources/css/app.css')
     </head>
     <body class="bg-slate-800 grid place-items-center h-screen">
-        <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto">
+        <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto" method="POST" action="{{ route('register.add') }}">
+            @csrf
+            @method('POST')
             <div class="w-full mx-auto flex flex-col gap-5">
                 <h1 class="text-xl text-white w-fit mx-auto">Register</h1>
                 <div>
