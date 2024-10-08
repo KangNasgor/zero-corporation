@@ -24,7 +24,7 @@ class LoginController extends Controller
                 'name' => 'required|string',
                 'password' => 'required|string',
             ]);
-            if($user->password === $req->password && $user->role_id === 2){
+            if(Auth::attempt(['name' => $req->name, 'password' => $req->password, 'role_id' => 2])){
                 Auth::login($user);
                 return redirect()->route('home');
             }

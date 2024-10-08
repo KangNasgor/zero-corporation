@@ -20,6 +20,7 @@
         <a class="text-slate-300 w-fit text-lg p-4" href="{{route('employee')}}">Employee</a>
         <a class="text-slate-300 w-fit text-lg p-4" href="{{route('products')}}">Products</a>
         <a class="text-slate-300 w-fit text-lg p-4" href="{{route('products')}}">Products</a>
+        <a class="text-slate-300 w-fit text-lg p-4" href="{{ route('logout') }}">Logout</a>
     </nav>
     <div class="">
         @yield('layout')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,7 @@ class RegisterController extends Controller
         if($validate){
             Admin::create([
                 'name' => $req->input('name'),
-                'password' => $req->input('password'),
+                'password' => Hash::make($req->input('password')),
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role_id' => '2',

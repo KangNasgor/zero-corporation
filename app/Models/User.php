@@ -61,6 +61,6 @@ class User extends Authenticatable
             return in_array($this->role->name, $roles);
         }
 
-        return $this->role->name === $roles;
+        return $this->role_id === $roles;
     }
 }

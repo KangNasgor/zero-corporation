@@ -15,4 +15,25 @@ class Admin extends Authenticatable
         'password',
         'role_id',
     ];
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     *
+     *
+     * @param string|array $roles
+     * @return bool
+     */
+    public function hasRole($roles)
+    {
+        if(!$this->role){
+            return false;
+        }
+        if(is_array($roles)){
+            return in_array($this->role_id->name, $roles);
+        }
+        return $this->role_id->name === $roles;
+    }
 }
