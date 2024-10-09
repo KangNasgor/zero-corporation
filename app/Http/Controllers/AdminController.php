@@ -5,6 +5,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -30,14 +31,16 @@ class AdminController extends Controller
     {
         $validate = $req->validate([
             'name' => ['bail','required','max:15'],
-            'price' => ['bail', 'numeric'],
-            'status' => ['required']
+            'password' => ['bail', 'required', 'max:15'],
+            'status' => ['required'],
+            'role_id' => ['required', 'numeric'],
         ]);
         if($validate){
-            admin::create([
+            Admin::create([
                 'name' => $req->input('name'),
-                'price' => $req->input('price'),
+                'password' => Hash::make($req->input('password')),
                 'status' => $req->input('status'),
+                'role_id' => $req->input('role_id')
             ]);
             return redirect()->route('admin');
         }
@@ -46,14 +49,15 @@ class AdminController extends Controller
         }
     }
     public function updateView(Request $req, int $id): View{
-        $admin = admin::where('id', $id)->first();
+        $admin = Admin::where('id', $id)->first();
         return view('admin/edit', compact('admin'));
     }
     public function update(Request $req, int $id){
-        $admin = admin::where('id', $id)->first();
+        $admin = Admin::where('id', $id)->first();
         $admin->update([
             'name' => $req->input('name'),
-            'price' => $req->input('price'),
+            'password' => Hash::make($req->input('password')),
+            'role_id' => $req->input('role_id'),
             'status' => $req->input('status'),
         ]);
         return redirect()->route('admin', $admin->id);
