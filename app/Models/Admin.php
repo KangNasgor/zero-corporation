@@ -14,6 +14,7 @@ class Admin extends Authenticatable
         'name',
         'password',
         'role_id',
+        'status',
     ];
     public function role()
     {

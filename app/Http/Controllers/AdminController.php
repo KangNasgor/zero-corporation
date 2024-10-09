@@ -14,11 +14,10 @@ class AdminController extends Controller
 
         if ($search) {
             $admin = admin::where('name', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')
-                ->orWhere('status', 'like', '%' . $search . '%')
+                ->orWhere('id', 'like', '%' . $search . '%')
                 ->get();
         } else {
-            $admin = admin::where('status', 'active')->get();
+            $admin = Admin::where('status', 'active')->get();
         }
         return view('admin/admin', compact('admin', 'search'));
     }
