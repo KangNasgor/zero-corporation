@@ -21,9 +21,8 @@ class SuperAdminRoleMiddleware
             return redirect()->route('loginView')->withErrors('You must be logged in to access this page.');
         }
         if($user->role_id == $role){
-            return $next($request);
+            return $next($request); 
         }
-        Auth::logout();
-        return redirect()->route('loginView')->withErrors('You do not have permission to access this page.');
+        return redirect()->route('home')->with('role-failed', 'You do not have permission to access this page.');
     }
 }

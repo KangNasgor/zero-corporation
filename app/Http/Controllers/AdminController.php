@@ -1,32 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\View\View;
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Models\Products;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class AdminController extends Controller
 {
     public function home(Request $req): View
     {
         $search = $req->input('search');
 
         if ($search) {
-            $products = Products::where('name', 'like', '%' . $search . '%')
+            $admin = admin::where('name', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%')
                 ->orWhere('status', 'like', '%' . $search . '%')
                 ->get();
         } else {
-            $products = Products::where('status', 'active')->get();
+            $admin = admin::where('status', 'active')->get();
         }
-        return view('product/product', compact('products', 'search'));
+        return view('admin/admin', compact('admin', 'search'));
     }
     public function createView(): View
     {
-        $products = Products::where('status', 'active')->get();
-        return view('product/create', compact('products'));
+        $admin = admin::where('status', 'active')->get();
+        return view('admin/create', compact('admin'));
     }
     public function create(Request $req)
     {
@@ -36,69 +35,64 @@ class ProductsController extends Controller
             'status' => ['required']
         ]);
         if($validate){
-            Products::create([
+            admin::create([
                 'name' => $req->input('name'),
                 'price' => $req->input('price'),
                 'status' => $req->input('status'),
             ]);
-            return redirect()->route('products');
+            return redirect()->route('admin');
         }
         else{
-            return view('product/create');
+            return view('admin/create');
         }
     }
     public function updateView(Request $req, int $id): View{
-        $products = Products::where('id', $id)->first();
-        return view('product.update', compact('products'));
+        $admin = admin::where('id', $id)->first();
+        return view('admin/edit', compact('admin'));
     }
     public function update(Request $req, int $id){
-        $products = Products::where('id', $id)->first();
-        $products->update([
+        $admin = admin::where('id', $id)->first();
+        $admin->update([
             'name' => $req->input('name'),
             'price' => $req->input('price'),
             'status' => $req->input('status'),
         ]);
-        return redirect()->route('products', $products->id);
+        return redirect()->route('admin', $admin->id);
     }
     public function history(Request $req): View
     {
         $search = $req->input('search');
 
         if ($search) {
-            $products = Products::where('name', 'like', '%' . $search . '%')
+            $admin = admin::where('name', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%')
                 ->orWhere('status', 'like', '%' . $search . '%')
                 ->get();
         } else {
-            $products = Products::where('status', 'unactive')->get();
+            $admin = admin::where('status', 'unactive')->get();
         }
-        return view('product/history', compact('products', 'search'));
+        return view('admin/history', compact('admin', 'search'));
     }
     public function softdelete(int $id){
-        $products = Products::where('id', $id)->first();
-        $products->update([
+        $admin = admin::where('id', $id)->first();
+        $admin->update([
             'status' => 'unactive',
         ]);
-        return redirect()->route('products');
+        return redirect()->route('admin');
     }
     public function delete(int $id){
-        $products = Products::where('id', $id)->first();
-        $products->delete();
-        $maxId = Products::max('id');
-        DB::statement('ALTER TABLE products AUTO_INCREMENT = ' . $maxId + 1);
+        $admin = admin::where('id', $id)->first();
+        $admin->delete();
+        $maxId = admin::max('id');
+        DB::statement('ALTER TABLE admin AUTO_INCREMENT = ' . $maxId + 1);
 
-        return redirect()->route('products.history');
+        return redirect()->route('admin/history');
     }
     public function restore(int $id){
-        $products = Products::where('id', $id)->first();
-        $products->update([
+        $admin = admin::where('id', $id)->first();
+        $admin->update([
             'status' => 'active',
         ]);
-        return redirect()->route('products');
-    }
-    public function api()
-    {
-        $products = Products::where('status', 'active')->get();
-        return response()->json($products);
+        return redirect()->route('admin');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RegisterController;
@@ -18,6 +19,18 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['web', SuperAdminRoleMiddleware::class.':3'])->group(function(){
     Route::get('/', [RegisterController::class, 'registerView'])->name('register');
     Route::post('/home', [RegisterController::class, 'registerAdmin'])->name('register.add');
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/admin', 'home')->name('admin');
+        Route::get('/admin/search', 'search')->name('admin.search');
+        Route::get('/admin/create', 'createView')->name('admin.create');
+        Route::post('/admin/create/store', 'create');
+        Route::get('/admin/edit/{id}', 'updateView')->name('admin.editpage');
+        Route::put('/admin/edit/update/{id}', 'update')->name('admin.edit');
+        Route::get('/admin/history', 'history')->name('admin.history');
+        Route::put('/admin/softdel/{id}', 'softdelete')->name('admin.softdelete');
+        Route::put('/admin/restore/{id}', 'restore')->name('admin.restore');
+        Route::delete('/admin/delete/{id}', 'delete')->name('admin.delete');
+    });
 });
 
 Route::middleware(['web', AdminRoleMiddleware::class.':2,3'])->group(function(){
