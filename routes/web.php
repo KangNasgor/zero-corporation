@@ -32,5 +32,14 @@ Route::middleware(['web', AdminRoleMiddleware::class.':2,3'])->group(function(){
     });
     Route::controller(EmployeeController::class)->group(function(){
         Route::get('/employee', 'employee')->name('employee');
+        Route::get('/employee/search', 'search')->name('employee.search');
+        Route::get('/employee/create', 'createView')->name('employee.create');
+        Route::post('/employee/create/store', 'create');
+        Route::get('/employee/edit/{id}', 'updateView')->name('employee.editpage');
+        Route::put('/employee/edit/update/{id}', 'update')->name('employee.edit');
+        Route::get('/employee/history', 'history')->name('employee.history');
+        Route::put('/employee/softdel/{id}', 'softdelete')->name('employee.softdelete');
+        Route::put('/employee/restore/{id}', 'restore')->name('employee.restore');
+        Route::delete('/employee/delete/{id}', 'delete')->name('employee.delete');
     });
 });

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller{
-    public function home(Request $req): View
+    public function employee(Request $req): View
     {
         $search = $req->input('search');
 
@@ -19,12 +19,12 @@ class EmployeeController extends Controller{
         } else {
             $employee = employee::where('status', 'active')->get();
         }
-        return view('product/product', compact('employee', 'search'));
+        return view('employee/employee', compact('employee', 'search'));
     }
     public function createView(): View
     {
         $employee = employee::where('status', 'active')->get();
-        return view('product/create', compact('employee'));
+        return view('employee/create', compact('employee'));
     }
     public function create(Request $req)
     {
@@ -42,12 +42,12 @@ class EmployeeController extends Controller{
             return redirect()->route('employee');
         }
         else{
-            return view('product/create');
+            return view('employee/create');
         }
     }
     public function updateView(Request $req, int $id): View{
         $employee = employee::where('id', $id)->first();
-        return view('product.update', compact('employee'));
+        return view('employee/edit', compact('employee'));
     }
     public function update(Request $req, int $id){
         $employee = employee::where('id', $id)->first();
@@ -70,7 +70,7 @@ class EmployeeController extends Controller{
         } else {
             $employee = employee::where('status', 'unactive')->get();
         }
-        return view('product/history', compact('employee', 'search'));
+        return view('employee/history', compact('employee', 'search'));
     }
     public function softdelete(int $id){
         $employee = employee::where('id', $id)->first();
