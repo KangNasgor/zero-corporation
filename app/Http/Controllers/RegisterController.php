@@ -24,7 +24,7 @@ class RegisterController extends Controller
                 'updated_at' => now(),
                 'role_id' => '2',
             ]);
-            return view('dashboard');
+            return view('login');
         }
         else{
             return view('register');

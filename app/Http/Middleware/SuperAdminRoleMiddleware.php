@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class SuperAdminRoleMiddleware
 {
@@ -13,8 +14,16 @@ class SuperAdminRoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string $role): Response
     {
-        return $next($request);
+        $user = Auth::user();
+        if(!$user){
+            return redirect()->route('loginView')->withErrors('You must be logged in to access this page.');
+        }
+        if($user->role_id == $role){
+            return $next($request);
+        }
+        Auth::logout();
+        return redirect()->route('loginView')->withErrors('You do not have permission to access this page.');
     }
 }
