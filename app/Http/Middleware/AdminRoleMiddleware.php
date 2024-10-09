@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 
-class RoleMiddleware
+class AdminRoleMiddleware
 {
     /**
      * Handle an incoming request.

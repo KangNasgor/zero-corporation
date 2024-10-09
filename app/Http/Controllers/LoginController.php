@@ -41,3 +41,10 @@ class LoginController extends Controller
         return redirect('/');
     }
 }
+/**
+ * ALUR KERJA LOGIN
+ * 
+ * From LoginController, using Auth::attempt() it tries to retrieve user's data from Admin table in the database, Admin Model is referred in config/auth.php
+ * if the data matches, the middleware will check the role is it admin or not,
+ * if not it will fail and user will be redirected to login page, if succeed the app will continue to work as expected.
+ */
