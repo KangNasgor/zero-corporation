@@ -28,6 +28,7 @@
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Name</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Age</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Salary</th>
+                        <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Status</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Options</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $emp->name }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $emp->age }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">Rp.{{ number_format($emp->salary, 2, ',', '.') }}</td>
+                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $emp->status }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-200">
                                     <a href="{{ route('employee.editpage', $emp->id) }}">
                                         <button class="bg-teal-300 text-black py-2 px-3 rounded-md">

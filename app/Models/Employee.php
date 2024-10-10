@@ -13,6 +13,7 @@ class Employee extends Model
         'name',
         'age',
         'salary',
+        'status',
         'created_at',
         'updated_at'
     ];
