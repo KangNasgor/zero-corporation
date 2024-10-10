@@ -53,8 +53,7 @@
                                         <button class="bg-red-600 py-2 px-3 rounded-md delete-button" data-id="{{ $emp->id }}">
                                             Delete
                                         </button>
-                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
-                                            id="modal-{{ $emp->id }}">
+                                        <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" id="modal-{{ $emp->id }}">
                                             <div class="h-1/4 w-1/4 p-5 flex flex-col justify-between bg-slate-500 rounded-md">
                                                 <div class="flex items-center justify-between">
                                                     <h1 class="text-xl">Delete "{{ $emp->name }}"?</h1>

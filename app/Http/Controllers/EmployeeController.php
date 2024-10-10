@@ -5,6 +5,7 @@ use App\Models\Employee;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller{
     public function employee(Request $req): View
@@ -28,21 +29,23 @@ class EmployeeController extends Controller{
     }
     public function create(Request $req)
     {
-        $validate = $req->validate([
-            'name' => ['bail','required','max:15'],
-            'price' => ['bail', 'numeric'],
+        $validate = Validator::make($req->all(),[
+            'name' => ['bail','required','max:20'],
+            'age' => ['bail', 'numeric', 'max:99'],
+            'salary' => ['bail', 'numeric'],
             'status' => ['required']
         ]);
-        if($validate){
-            employee::create([
-                'name' => $req->input('name'),
-                'price' => $req->input('price'),
-                'status' => $req->input('status'),
-            ]);
-            return redirect()->route('employee');
+        if($validate->fails()){
+            return redirect()->back()->withErrors($validate)->withInput();
         }
         else{
-            return view('employee/create');
+            Employee::create([
+                'name' => $req->input('name'),
+                'age' => $req->input('age'),
+                'salary' => $req->input('salary'),
+                'status' => $req->input('status')
+            ]);
+            return redirect()->route('employee');
         }
     }
     public function updateView(Request $req, int $id): View{
@@ -53,7 +56,8 @@ class EmployeeController extends Controller{
         $employee = employee::where('id', $id)->first();
         $employee->update([
             'name' => $req->input('name'),
-            'price' => $req->input('price'),
+            'age' => $req->input('age'),
+            'salary' => $req->input('salary'),
             'status' => $req->input('status'),
         ]);
         return redirect()->route('employee', $employee->id);
@@ -73,7 +77,7 @@ class EmployeeController extends Controller{
         return view('employee/history', compact('employee', 'search'));
     }
     public function softdelete(int $id){
-        $employee = employee::where('id', $id)->first();
+        $employee = Employee::where('id', $id)->first();
         $employee->update([
             'status' => 'unactive',
         ]);
