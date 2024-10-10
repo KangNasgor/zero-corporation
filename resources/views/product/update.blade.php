@@ -3,8 +3,7 @@
     <title>Create Product</title>
     <div>
         <div class="h-screen flex justify-center items-center">
-            <form action="{{ route('products.edit', $products->id) }}" method="POST"
-                class="w-fit h-2/4 mx-auto pt-10 grid grid-cols-2 gap-3">
+            <form action="{{ route('products.edit', $products->id) }}" method="POST" class="w-fit h-2/4 mx-auto pt-10 grid grid-cols-2 gap-3">
                 @csrf
                 @method('PUT')
                 <label class="text-white text-xl">Name</label>

@@ -10,7 +10,7 @@
                             Create
                         </button>
                     </a>
-                    <a href="{{ route('products') }}">
+                    <a href="{{ route('products.history') }}">
                         <button class="text-white bg-slate-600 py-2 px-3 rounded-md">
                             Home
                         </button>

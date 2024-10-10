@@ -14,8 +14,8 @@ class EmployeeController extends Controller{
 
         if ($search) {
             $employee = employee::where('name', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')
-                ->orWhere('status', 'like', '%' . $search . '%')
+                ->orWhere('age', 'like', '%' . $search . '%')
+                ->orWhere('salary', 'like', '%' . $search . '%')
                 ->get();
         } else {
             $employee = employee::where('status', 'active')->get();
@@ -68,8 +68,8 @@ class EmployeeController extends Controller{
 
         if ($search) {
             $employee = employee::where('name', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')
-                ->orWhere('status', 'like', '%' . $search . '%')
+                ->orWhere('age', 'like', '%' . $search . '%')
+                ->orWhere('salary', 'like', '%' . $search . '%')
                 ->get();
         } else {
             $employee = employee::where('status', 'unactive')->get();
@@ -87,7 +87,7 @@ class EmployeeController extends Controller{
         $employee = employee::where('id', $id)->first();
         $employee->delete();
         $maxId = employee::max('id');
-        DB::statement('ALTER TABLE employee AUTO_INCREMENT = ' . $maxId + 1);
+        DB::statement('ALTER TABLE employees AUTO_INCREMENT = ' . $maxId + 1);
 
         return redirect()->route('employee.history');
     }
