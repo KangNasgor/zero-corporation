@@ -87,9 +87,9 @@ class AdminController extends Controller
         $admin = admin::where('id', $id)->first();
         $admin->delete();
         $maxId = admin::max('id');
-        DB::statement('ALTER TABLE admin AUTO_INCREMENT = ' . $maxId + 1);
+        DB::statement('ALTER TABLE admins AUTO_INCREMENT = ' . $maxId + 1);
 
-        return redirect()->route('admin/history');
+        return redirect()->route('admin.history');
     }
     public function restore(int $id){
         $admin = admin::where('id', $id)->first();
