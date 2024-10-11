@@ -5,8 +5,10 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
+
 use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +36,7 @@ Route::middleware(['web', SuperAdminRoleMiddleware::class.':3'])->group(function
 });
 
 Route::middleware(['web', AdminRoleMiddleware::class.':2,3'])->group(function(){
-    Route::view('/home', 'dashboard')->name('home');
+    Route::get('/home', [DashboardController::class, 'dashboard'])->name('home');
     Route::controller(ProductsController::class)->group(function(){
         Route::get('/products', 'home')->name('products');
         Route::get('/productsAPI', 'api');
