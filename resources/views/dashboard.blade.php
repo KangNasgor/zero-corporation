@@ -22,9 +22,9 @@
             </div>
         </div>
         <div class="flex w-11/12 mx-auto mt-10 gap-5">
-            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white transition-all duration-300 ease-in-out" id="content1">
+            <div class="w-fit px-9 pb-10 h-36w overflow-hidden bg-slate-600 rounded-md text-white transition-all duration-300 ease-in-out" id="content1">
                 <div class="flex justify-end">
-                    <button onclick="toggleReadMore('content1', this)" class="mt-3 text-blue-400 hover:underline">
+                    <button onclick="toggleReadMore('content1', this)" class="mt-3 text-white hover:underline">
                         <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
                     </button>
                 </div>

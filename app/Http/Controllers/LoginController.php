@@ -24,9 +24,15 @@ class LoginController extends Controller
                 'name' => 'required|string',
                 'password' => 'required|string',
             ]);
-            if(Auth::attempt(['name' => $req->name, 'password' => $req->password, 'role_id' => 2])){
-                Auth::login($user);
-                return redirect()->route('home');
+            if(Auth::attempt(['name' => $req->name, 'password' => $req->password])){
+                if(in_array($user->role_id, [2,3])){
+                    Auth::login($user);
+                    return redirect()->route('home');
+                }
+                else{
+                    Auth::logout();
+                    return redirect()->route('login')->withErrors(['message' => 'Unauthorized role']);
+                }
             }
             else{
                 return redirect()->back();
