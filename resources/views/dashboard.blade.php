@@ -22,9 +22,9 @@
             </div>
         </div>
         <div class="flex w-11/12 mx-auto mt-10 gap-5">
-            <div class="w-fit px-9 pb-10 h-36w overflow-hidden bg-slate-600 rounded-md text-white transition-all duration-300 ease-in-out" id="content1">
+            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white transition-all duration-300 ease-in-out" id="content1">
                 <div class="flex justify-end">
-                    <button onclick="toggleReadMore('content1', this)" class="mt-3 text-white hover:underline">
+                    <button onclick="toggleReadMore('content1', this)" class="mt-3">
                         <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
                     </button>
                 </div>
@@ -34,31 +34,41 @@
                     <h1 class="text-3xl mb-4 w-fit">Active Products</h1>
                     @foreach ($products as $prod)
                         <ul class="list-disc">
-                            <li>{{ $prod->name }}</li>
+                            <li class="leading-7">{{ $prod->name }}</li>
                         </ul>
                     @endforeach
                 @endif
             </div>
-            <div class="w-fit px-9 py-10 h-fit bg-slate-600 rounded-md text-white">
+            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white" id="content2">
+                <div class="flex justify-end">
+                    <button onclick="toggleReadMore('content2', this)" class="mt-3">
+                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                    </button>
+                </div>
                 @if ($employees->isEmpty())
                     <h1 class="text-3xl">No active employee.</h1>
                 @else
                     <h1 class="text-3xl mb-4">Active Employee</h1>
                     @foreach ($employees as $emp)
                         <ul class="list-disc">
-                            <li>{{ $emp->name }}</li>
+                            <li class="leading-7">{{ $emp->name }}</li>
                         </ul>
                     @endforeach
                 @endif
             </div>
-            <div class="w-fit px-9 py-10 h-fit bg-slate-600 rounded-md text-white">
+            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white" id="content3">
+                <div class="flex justify-end">
+                    <button onclick="toggleReadMore('content3', this)" class="mt-3">
+                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                    </button>
+                </div>
                 @if ($admin->isEmpty())
                     <h1 class="text-3xl">No active admin.</h1>
                 @else
                     <h1 class="text-3xl mb-4">Active Admin</h1>
                     @foreach ($admin as $adm)
                         <ul class="list-disc">
-                            <li>{{ $adm->name }}</li>
+                            <li class="leading-7">{{ $adm->name }}</li>
                         </ul>
                     @endforeach
                 @endif
@@ -83,21 +93,20 @@
             }
         }
         function toggleReadMore(contentId, button) {
-
             const content = document.getElementById(contentId);
             const icon = button.querySelector('i');
 
             if (content.classList.contains('h-36')) {
                 content.classList.remove('h-36');
                 content.classList.remove('overflow-hidden');
-                content.classList.add('w-fit');
+                content.classList.add('h-fit');
                 icon.classList.remove('fa-up-right-and-down-left-from-center');
                 icon.classList.add('fa-compress');
             }
             else {
                 content.classList.add('h-36');
                 content.classList.add('overflow-hidden');
-                content.classList.remove('w-fit');
+                content.classList.remove('h-fit');
                 icon.classList.add('fa-up-right-and-down-left-from-center');
                 icon.classList.remove('fa-compress');
             }
