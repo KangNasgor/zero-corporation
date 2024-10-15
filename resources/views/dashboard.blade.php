@@ -22,55 +22,61 @@
             </div>
         </div>
         <div class="flex w-11/12 mx-auto mt-10 gap-5">
-            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white transition-all duration-300 ease-in-out" id="content1">
-                <div class="flex justify-end">
-                    <button onclick="toggleReadMore('content1', this)" class="mt-3">
-                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                    </button>
-                </div>
+            <div class="w-fit h-36 overflow-hidden bg-slate-600 rounded-md text-white transition-all duration-300 ease-in-out" id="content1">
                 @if ($products->isEmpty())
                     <h1 class="text-3xl">No active products.</h1>
                 @else
-                    <h1 class="text-3xl mb-4 w-fit">Active Products</h1>
-                    @foreach ($products as $prod)
-                        <ul class="list-disc">
-                            <li class="leading-7">{{ $prod->name }}</li>
-                        </ul>
-                    @endforeach
+                    <div class="flex justify-end relative">
+                        <button onclick="toggleReadMore('content1', this)" class="mt-2 mr-3">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="mx-9 mb-10">
+                        <h1 class="text-3xl mb-4 w-fit">Active Products</h1>
+                        @foreach ($products as $prod)
+                            <ul class="list-disc">
+                                <li class="leading-7">{{ $prod->name }}</li>
+                            </ul>
+                        @endforeach
+                    </div>
                 @endif
             </div>
-            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white" id="content2">
-                <div class="flex justify-end">
-                    <button onclick="toggleReadMore('content2', this)" class="mt-3">
-                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                    </button>
-                </div>
+            <div class="w-fit h-36 overflow-hidden bg-slate-600 rounded-md text-white" id="content2">
                 @if ($employees->isEmpty())
                     <h1 class="text-3xl">No active employee.</h1>
                 @else
-                    <h1 class="text-3xl mb-4">Active Employee</h1>
-                    @foreach ($employees as $emp)
-                        <ul class="list-disc">
-                            <li class="leading-7">{{ $emp->name }}</li>
-                        </ul>
-                    @endforeach
+                    <div class="flex justify-end">
+                        <button onclick="toggleReadMore('content2', this)" class="mt-2 mr-3">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="mx-9 mb-10">
+                        <h1 class="text-3xl mb-4">Active Employee</h1>
+                        @foreach ($employees as $emp)
+                            <ul class="list-disc">
+                                <li class="leading-7">{{ $emp->name }}</li>
+                            </ul>
+                        @endforeach
+                    </div>
                 @endif
             </div>
-            <div class="w-fit px-9 pb-10 h-36 overflow-hidden bg-slate-600 rounded-md text-white" id="content3">
-                <div class="flex justify-end">
-                    <button onclick="toggleReadMore('content3', this)" class="mt-3">
-                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                    </button>
-                </div>
+            <div class="w-fit h-36 overflow-hidden bg-slate-600 rounded-md text-white" id="content3">
                 @if ($admin->isEmpty())
                     <h1 class="text-3xl">No active admin.</h1>
                 @else
-                    <h1 class="text-3xl mb-4">Active Admin</h1>
-                    @foreach ($admin as $adm)
-                        <ul class="list-disc">
-                            <li class="leading-7">{{ $adm->name }}</li>
-                        </ul>
-                    @endforeach
+                    <div class="flex justify-end">
+                        <button onclick="toggleReadMore('content3', this)" class="mt-2 mr-3">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="mx-9 mb-10">
+                        <h1 class="text-3xl mb-4">Active Admin</h1>
+                        @foreach ($admin as $adm)
+                            <ul class="list-disc">
+                                <li class="leading-7">{{ $adm->name }}</li>
+                            </ul>
+                        @endforeach
+                    </div>
                 @endif
             </div>
         </div>
@@ -100,14 +106,14 @@
                 content.classList.remove('h-36');
                 content.classList.remove('overflow-hidden');
                 content.classList.add('h-fit');
-                icon.classList.remove('fa-up-right-and-down-left-from-center');
+                icon.classList.remove('fa-expand');
                 icon.classList.add('fa-compress');
             }
             else {
                 content.classList.add('h-36');
                 content.classList.add('overflow-hidden');
                 content.classList.remove('h-fit');
-                icon.classList.add('fa-up-right-and-down-left-from-center');
+                icon.classList.add('fa-expand');
                 icon.classList.remove('fa-compress');
             }
         }
