@@ -29,18 +29,28 @@ Route::get('/login', [LoginController::class, 'loginView'])->name('loginView');
 Route::post('/login/admin', [LoginController::class, 'loginAdmin'])->name('login.admin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Routes that can be accessed by viewer, admin, and super admin
-Route::middleware(['web', AdminRoleMiddleware::class.':2,3,4'])->group(function(){
+Route::middleware(['web', SuperAdminRoleMiddleware::class.':3'])->group(function(){
+    Route::get('/', [RegisterController::class, 'registerView'])->name('register');
+    Route::post('/home', [RegisterController::class, 'registerAdmin'])->name('register.add');
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/admin', 'home')->name('admin');
+        Route::get('/admin/search', 'search')->name('admin.search');
+        Route::get('/admin/create', 'createView')->name('admin.create');
+        Route::post('/admin/create/store', 'create');
+        Route::get('/admin/edit/{id}', 'updateView')->name('admin.editpage');
+        Route::put('/admin/edit/update/{id}', 'update')->name('admin.edit');
+        Route::get('/admin/history', 'history')->name('admin.history');
+        Route::put('/admin/softdel/{id}', 'softdelete')->name('admin.softdelete');
+        Route::put('/admin/restore/{id}', 'restore')->name('admin.restore');
+        Route::delete('/admin/delete/{id}', 'delete')->name('admin.delete');
+    });
+});
+
+Route::middleware(['web', AdminRoleMiddleware::class.':2,3'])->group(function(){
     Route::get('/home', [DashboardController::class, 'dashboard'])->name('home');
     Route::controller(ProductsController::class)->group(function(){
         Route::get('/products', 'home')->name('products');
         Route::get('/productsAPI', 'api');
-    });
-});
-
-// Routes that can be accessed only by admin and super admin
-Route::middleware(['web', AdminRoleMiddleware::class.':2,3'])->group(function(){
-    Route::controller(ProductsController::class)->group(function(){
         Route::get('/products/search', 'search')->name('products.search');
         Route::get('/products/create', 'createView')->name('create-products');
         Route::post('/products/create/store', 'create');
@@ -64,23 +74,3 @@ Route::middleware(['web', AdminRoleMiddleware::class.':2,3'])->group(function(){
         Route::delete('/employee/delete/{id}', 'delete')->name('employee.delete');
     });
 });
-
-// Routes that can only be accessed by super admin
-Route::middleware(['web', SuperAdminRoleMiddleware::class.':3'])->group(function(){
-    Route::get('/', [RegisterController::class, 'registerView'])->name('register');
-    Route::post('/home', [RegisterController::class, 'registerAdmin'])->name('register.add');
-    Route::controller(AdminController::class)->group(function(){
-        Route::get('/admin', 'home')->name('admin');
-        Route::get('/admin/search', 'search')->name('admin.search');
-        Route::get('/admin/create', 'createView')->name('admin.create');
-        Route::post('/admin/create/store', 'create');
-        Route::get('/admin/edit/{id}', 'updateView')->name('admin.editpage');
-        Route::put('/admin/edit/update/{id}', 'update')->name('admin.edit');
-        Route::get('/admin/history', 'history')->name('admin.history');
-        Route::put('/admin/softdel/{id}', 'softdelete')->name('admin.softdelete');
-        Route::put('/admin/restore/{id}', 'restore')->name('admin.restore');
-        Route::delete('/admin/delete/{id}', 'delete')->name('admin.delete');
-    });
-});
-
-require __DIR__.'/auth.php';
