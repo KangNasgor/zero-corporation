@@ -53,14 +53,25 @@ class AdminController extends Controller
         return view('admin/edit', compact('admin'));
     }
     public function update(Request $req, int $id){
-        $admin = Admin::where('id', $id)->first();
-        $admin->update([
-            'name' => $req->input('name'),
-            'password' => Hash::make($req->input('password')),
-            'role_id' => $req->input('role_id'),
-            'status' => $req->input('status'),
+        $validate = $req->validate([
+            'name' => ['bail','required','max:15'],
+            'password' => ['bail', 'required', 'max:15'],
+            'status' => ['required'],
+            'role_id' => ['required', 'numeric'],
         ]);
-        return redirect()->route('admin', $admin->id);
+        if($validate){
+            $admin = Admin::where('id', $id)->first();
+            $admin->update([
+                'name' => $req->input('name'),
+                'password' => Hash::make($req->input('password')),
+                'role_id' => $req->input('role_id'),
+                'status' => $req->input('status'),
+            ]);
+            return redirect()->route('admin', $admin->id);
+        }
+        else{
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
     }
     public function history(Request $req): View
     {

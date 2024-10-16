@@ -53,13 +53,24 @@ class EmployeeController extends Controller{
         return view('employee/edit', compact('employee'));
     }
     public function update(Request $req, int $id){
-        $employee = employee::where('id', $id)->first();
-        $employee->update([
-            'name' => $req->input('name'),
-            'age' => $req->input('age'),
-            'salary' => $req->input('salary'),
-            'status' => $req->input('status'),
+        $validate = Validator::make($req->all(),[
+            'name' => ['bail','required','max:20'],
+            'age' => ['bail', 'numeric', 'max:99'],
+            'salary' => ['bail', 'numeric'],
+            'status' => ['required']
         ]);
+        if($validate->fails()){
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+        else{
+            $employee = Employee::where('id', $id)->first();
+            $employee->update([
+                'name' => $req->input('name'),
+                'age' => $req->input('age'),
+                'salary' => $req->input('salary'),
+                'status' => $req->input('status'),
+            ]);
+        }
         return redirect()->route('employee', $employee->id);
     }
     public function history(Request $req): View

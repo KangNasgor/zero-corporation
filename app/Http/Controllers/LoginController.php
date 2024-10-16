@@ -21,8 +21,8 @@ class LoginController extends Controller
         }
         else{
             $req->validate([
-                'name' => 'required|string',
-                'password' => 'required|string',
+                'name' => 'bail|required|string|max:15',
+                'password' => 'bail|required|string|max:10',
             ]);
             if(Auth::attempt(['name' => $req->name, 'password' => $req->password])){
                 if(in_array($user->role_id, [2,3])){
@@ -31,7 +31,7 @@ class LoginController extends Controller
                 }
                 else{
                     Auth::logout();
-                    return redirect()->route('login')->withErrors(['message' => 'Unauthorized role']);
+                    return redirect()->route('loginView')->withErrors(['message' => 'Unauthorized role']);
                 }
             }
             else{

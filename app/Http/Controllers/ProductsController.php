@@ -57,14 +57,24 @@ class ProductsController extends Controller
         return view('product.update', compact('products', 'handler'));
     }
     public function update(Request $req, int $id){
-        $products = Products::where('id', $id)->first();
-        $products->update([
-            'name' => $req->input('name'),
-            'price' => $req->input('price'),
-            'status' => $req->input('status'),
-            'handler_id' => $req->input('handler'),
+        $validate = $req->validate([
+            'name' => ['bail','required','max:15'],
+            'price' => ['bail', 'numeric'],
+            'status' => ['required']
         ]);
-        return redirect()->route('products', $products->id);
+        if($validate){
+            $products = Products::where('id', $id)->first();
+            $products->update([
+                'name' => $req->input('name'),
+                'price' => $req->input('price'),
+                'status' => $req->input('status'),
+                'handler_id' => $req->input('handler'),
+            ]);
+            return redirect()->route('products', $products->id);
+        }
+        else{
+            return redirect()->back();
+        }
     }
     public function history(Request $req): View
     {
