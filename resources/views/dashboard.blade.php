@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-expand"></i>
                         </button>
                     </div>
-                    <div class="mx-9 mb-10">
+                    <div class="mx-9 mb-9">
                         <h1 class="text-3xl mb-4 w-fit">Active Products</h1>
                         @foreach ($products as $prod)
                             <ul class="list-disc">
@@ -50,7 +50,7 @@
                             <i class="fa-solid fa-expand"></i>
                         </button>
                     </div>
-                    <div class="mx-9 mb-10">
+                    <div class="mx-9 mb-9">
                         <h1 class="text-3xl mb-4">Active Employee</h1>
                         @foreach ($employees as $emp)
                             <ul class="list-disc">
@@ -69,7 +69,7 @@
                             <i class="fa-solid fa-expand"></i>
                         </button>
                     </div>
-                    <div class="mx-9 mb-10">
+                    <div class="mx-9 mb-9">
                         <h1 class="text-3xl mb-4">Active Admin</h1>
                         @foreach ($admin as $adm)
                             <ul class="list-disc">
