@@ -25,7 +25,7 @@ class LoginController extends Controller
                 'password' => 'bail|required|string|max:10',
             ]);
             if(Auth::attempt(['name' => $req->name, 'password' => $req->password])){
-                if(in_array($user->role_id, [2,3])){
+                if(in_array($user->role_id, [2,3,4])){
                     Auth::login($user);
                     return redirect()->route('home');
                 }
