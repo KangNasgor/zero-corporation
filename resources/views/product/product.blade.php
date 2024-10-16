@@ -27,6 +27,7 @@
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">ID</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Name</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Price</th>
+                        <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Handler</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Status</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Options</th>
                     </tr>
@@ -41,8 +42,8 @@
                             <tr>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $prod->id }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $prod->name }}</td>
-                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">
-                                    Rp.{{ number_format($prod->price, 2, ',', '.') }}</td>
+                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">Rp.{{ number_format($prod->price, 2, ',', '.') }}</td>
+                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $prod->handler->name ?? 'None' }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $prod->status }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-200">
                                     <a href="{{ route('products.editpage', $prod->id) }}">

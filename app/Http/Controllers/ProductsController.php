@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Products;
@@ -17,16 +18,18 @@ class ProductsController extends Controller
             $products = Products::where('name', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%')
                 ->orWhere('status', 'like', '%' . $search . '%')
+                ->orWhere('handler', 'like', '%' . $search . '%')
                 ->get();
         } else {
-            $products = Products::where('status', 'active')->get();
+            $products = Products::with('handler')->where('status', 'active')->get();
         }
         return view('product/product', compact('products', 'search'));
     }
     public function createView(): View
     {
         $products = Products::where('status', 'active')->get();
-        return view('product/create', compact('products'));
+        $handler = Employee::where('status', 'active')->get();
+        return view('product/create', compact('products', 'handler'));
     }
     public function create(Request $req)
     {
@@ -40,6 +43,7 @@ class ProductsController extends Controller
                 'name' => $req->input('name'),
                 'price' => $req->input('price'),
                 'status' => $req->input('status'),
+                'handler_id' => $req->input('handler'),
             ]);
             return redirect()->route('products');
         }
@@ -49,7 +53,8 @@ class ProductsController extends Controller
     }
     public function updateView(Request $req, int $id): View{
         $products = Products::where('id', $id)->first();
-        return view('product.update', compact('products'));
+        $handler = Employee::where('status', 'active')->get();
+        return view('product.update', compact('products', 'handler'));
     }
     public function update(Request $req, int $id){
         $products = Products::where('id', $id)->first();
@@ -57,6 +62,7 @@ class ProductsController extends Controller
             'name' => $req->input('name'),
             'price' => $req->input('price'),
             'status' => $req->input('status'),
+            'handler_id' => $req->input('handler'),
         ]);
         return redirect()->route('products', $products->id);
     }

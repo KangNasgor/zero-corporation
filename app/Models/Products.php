@@ -14,8 +14,9 @@ class Products extends Model
         'name',
         'price',
         'status',
+        'handler_id',
     ];
-    public function employee(): BelongsTo{
+    public function handler(): BelongsTo{
         return $this->belongsTo(Employee::class);
     }
 
