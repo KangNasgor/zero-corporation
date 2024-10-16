@@ -31,36 +31,57 @@
                 @if ($products->isEmpty())
                     <h1 class="text-3xl">No active products.</h1>
                 @else
-                    <h1 class="text-3xl mb-4 w-fit">Active Products</h1>
-                    @foreach ($products as $prod)
-                        <ul class="list-disc">
-                            <li>{{ $prod->name }}</li>
-                        </ul>
-                    @endforeach
+                    <div class="flex justify-end relative">
+                        <button onclick="toggleReadMore('content1', this)" class="mt-2 mr-3">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="mx-9 mb-10">
+                        <h1 class="text-3xl mb-4 w-fit">Active Products</h1>
+                        @foreach ($products as $prod)
+                            <ul class="list-disc">
+                                <li class="leading-7">{{ $prod->name }}</li>
+                            </ul>
+                        @endforeach
+                    </div>
                 @endif
             </div>
             <div class="w-fit px-9 py-10 h-fit bg-slate-600 rounded-md text-white">
                 @if ($employees->isEmpty())
                     <h1 class="text-3xl">No active employee.</h1>
                 @else
-                    <h1 class="text-3xl mb-4">Active Employee</h1>
-                    @foreach ($employees as $emp)
-                        <ul class="list-disc">
-                            <li>{{ $emp->name }}</li>
-                        </ul>
-                    @endforeach
+                    <div class="flex justify-end">
+                        <button onclick="toggleReadMore('content2', this)" class="mt-2 mr-3">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="mx-9 mb-10">
+                        <h1 class="text-3xl mb-4">Active Employee</h1>
+                        @foreach ($employees as $emp)
+                            <ul class="list-disc">
+                                <li class="leading-7">{{ $emp->name }}</li>
+                            </ul>
+                        @endforeach
+                    </div>
                 @endif
             </div>
             <div class="w-fit px-9 py-10 h-fit bg-slate-600 rounded-md text-white">
                 @if ($admin->isEmpty())
                     <h1 class="text-3xl">No active admin.</h1>
                 @else
-                    <h1 class="text-3xl mb-4">Active Admin</h1>
-                    @foreach ($admin as $adm)
-                        <ul class="list-disc">
-                            <li>{{ $adm->name }}</li>
-                        </ul>
-                    @endforeach
+                    <div class="flex justify-end">
+                        <button onclick="toggleReadMore('content3', this)" class="mt-2 mr-3">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="mx-9 mb-10">
+                        <h1 class="text-3xl mb-4">Active Admin</h1>
+                        @foreach ($admin as $adm)
+                            <ul class="list-disc">
+                                <li class="leading-7">{{ $adm->name }}</li>
+                            </ul>
+                        @endforeach
+                    </div>
                 @endif
             </div>
         </div>
