@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Products;
 
 use App\Models\Employee;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {

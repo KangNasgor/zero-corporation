@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Products;
 use App\Models\Employee;
 use App\Models\Admin;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
