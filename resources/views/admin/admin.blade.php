@@ -42,7 +42,7 @@
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $adm->id }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $adm->name }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $adm->status }}</td>
-                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $adm->role_id }}</td>
+                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $adm->role_id->name }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-200">
                                     <a href="{{ route('admin.editpage', $adm->id) }}">
                                         <button class="bg-teal-300 text-black py-2 px-3 rounded-md">

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Admin extends Authenticatable
 {
@@ -16,25 +17,9 @@ class Admin extends Authenticatable
         'role_id',
         'status',
     ];
-    public function role()
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
 
-    /**
-     *
-     *
-     * @param string|array $roles
-     * @return bool
-     */
-    public function hasRole($roles)
-    {
-        if(!$this->role){
-            return false;
-        }
-        if(is_array($roles)){
-            return in_array($this->role_id->name, $roles);
-        }
-        return $this->role_id->name === $roles;
-    }
 }
