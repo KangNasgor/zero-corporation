@@ -9,23 +9,23 @@
         @vite('resources/css/app.css')
     </head>
     <body class="bg-slate-800 grid place-items-center h-screen">
-        <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto" method="POST" action="{{ route('login.user') }}">
+        <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto" method="POST" action="{{ route('register.user') }}">
             @csrf
             @method('POST')
             <div class="w-full mx-auto flex flex-col gap-5">
                 <h1 class="text-xl text-white w-fit mx-auto">Daftar dulu kang!</h1>
                 <div>
                     <h1 class="text-white w-fit mb-2">Nama</h1>
-                    <input class="mx-auto w-full rounded-md px-2 py-1" name="name">
+                    <input class="mx-auto w-full rounded-md px-2 py-1" name="name" placeholder="Nama lu tulis disini">
                 </div>
                 <div>
                     <h1 class="text-white w-fit mb-2">Email</h1>
-                    <input class="mx-auto w-full rounded-md px-2 py-1" name="email" type="email">
+                    <input class="mx-auto w-full rounded-md px-2 py-1" name="email" type="email" placeholder="email lu jg ditulis disini">
                 </div>
                 <div class="w-full">
                     <h1 class="text-white w-fit mb-2">Password</h1>
                     <div class="flex items-center gap-2">
-                        <input class="mx-auto w-full rounded-md px-2 py-1" type="password" name="password" id="password">
+                        <input class="mx-auto w-full rounded-md px-2 py-1" type="password" name="password" id="password" placeholder="password lu kang">
                         <i class="fa-regular fa-eye text-white block min-w-6" id="eyeOn"></i>
                         <i class="fa-regular fa-eye-slash text-white hidden min-w-6" id="eyeOff"></i>
                     </div>

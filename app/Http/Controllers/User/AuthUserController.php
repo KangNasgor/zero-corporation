@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Controllers\User;
+
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
+
+class AuthUserController extends Controller
+{
+    public function verify(EmailVerificationRequest $request){
+        $request->fulfill();
+
+        return redirect()->route('dashboard.user');
+    }
+    public function resend(Request $request){
+        dd(Auth::user());
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Verification link sent!');
+    }
+}
