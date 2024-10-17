@@ -6,7 +6,6 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin;
 
 class AdminRoleMiddleware
 {
@@ -20,12 +19,12 @@ class AdminRoleMiddleware
     {
         $user = Auth::user();
         if(!$user){
-            return redirect()->route('loginView')->withErrors('You must be logged in to access this page.');
+            return redirect()->route('login')->withErrors('You must be logged in to access this page.');
         }
         if (in_array($user->role_id, $roles)) {
             return $next($request);
         }
         Auth::logout();
-        return redirect()->route('loginView')->withErrors('You do not have permission to access this page.');
+        return redirect()->route('login')->withErrors('You do not have permission to access this page.');
     }
 }

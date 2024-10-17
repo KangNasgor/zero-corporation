@@ -16,7 +16,6 @@ class AuthUserController extends Controller
         return redirect()->route('dashboard.user');
     }
     public function resend(Request $request){
-        dd(Auth::user());
         $request->user()->sendEmailVerificationNotification();
         return back()->with('message', 'Verification link sent!');
     }

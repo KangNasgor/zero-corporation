@@ -18,7 +18,7 @@ class SuperAdminRoleMiddleware
     {
         $user = Auth::user();
         if(!$user){
-            return redirect()->route('loginView')->withErrors('You must be logged in to access this page.');
+            return redirect()->route('login')->withErrors('You must be logged in to access this page.');
         }
         if($user->role_id == $role){
             return $next($request); 

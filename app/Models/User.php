@@ -55,12 +55,4 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param string|array $roles
      * @return bool
      */
-    public function hasRole($roles)
-    {
-        if (is_array($roles)) {
-            return in_array($this->role->name, $roles);
-        }
-
-        return $this->role_id === $roles;
-    }
 }

@@ -23,16 +23,16 @@ class LoginController extends Controller
         else{
             $req->validate([
                 'name' => 'bail|required|string|max:15',
-                'password' => 'bail|required|string|max:10',
+                'password' => 'bail|required|string|max:10',    
             ]);
-            if(Auth::attempt(['name' => $req->name, 'password' => $req->password])){
+            if(Auth::guard('admin')->attempt(['name' => $req->name, 'password' => $req->password])){
                 if(in_array($user->role_id, [2,3])){
                     Auth::login($user);
                     return redirect()->route('home');
                 }
                 else{
                     Auth::logout();
-                    return redirect()->route('loginView')->withErrors(['message' => 'Unauthorized role']);
+                    return redirect()->route('login')->withErrors(['message' => 'Unauthorized role']);
                 }
             }
             else{
@@ -45,7 +45,7 @@ class LoginController extends Controller
         $req->session()->invalidate();
         $req->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 }
 /**
