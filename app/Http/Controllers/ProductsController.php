@@ -28,7 +28,6 @@ class ProductsController extends Controller
     public function createView(): View
     {
         $products = Products::where('status', 'active')->get();
-        $handler = Employee::where('status', 'active')->get();
         return view('product/create', compact('products', 'handler'));
     }
     public function create(Request $req)
