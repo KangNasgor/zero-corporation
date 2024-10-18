@@ -19,4 +19,10 @@ class AuthUserController extends Controller
         $request->user()->sendEmailVerificationNotification();
         return back()->with('message', 'Verification link sent!');
     }
+    public function logout(Request $req){
+        Auth::logout();
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
+        return redirect()->route('loginUserView');
+    }
 }

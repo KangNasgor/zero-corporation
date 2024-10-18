@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\User\AuthUserController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\RegisterUserController;
+use App\Http\Controllers\User\LoginUserController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
@@ -63,6 +64,7 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
 });
 // User register below
 Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
+    // User registration
     Route::get('/register', [RegisterUserController::class, 'registerUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('registerUserView');
     Route::post('/register/user', [RegisterUserController::class, 'register'])->withoutMiddleware(UserAuthMiddleware::class)->name('register.user');
     Route::get('email/verify', function () {
@@ -71,6 +73,12 @@ Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
     Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->name('verification.verify');
     Route::post('email/resend', [AuthUserController::class, 'resend'])->name('verification.resend');
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
+
+    // User login
+    Route::get('/login/user', [LoginUserController::class, 'loginUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('loginUserView');
+    Route::post('/login/user/submit', [LoginUserController::class, 'login'])->withoutMiddleware(UserAuthMiddleware::class)->name('login.user');
+    // User logout
+    Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
 });
 
 
