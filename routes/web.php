@@ -15,7 +15,8 @@ use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
 
-Route::middleware(['auth:admin',SuperAdminRoleMiddleware::class.':3'])->group(function(){
+// Admin routes below
+Route::middleware(['auth:admin', SuperAdminRoleMiddleware::class.':3'])->group(function(){
     Route::get('/', [RegisterController::class, 'registerView'])->name('register');
     Route::post('/home', [RegisterController::class, 'registerAdmin'])->name('register.add');
     Route::controller(AdminController::class)->group(function(){
@@ -32,7 +33,7 @@ Route::middleware(['auth:admin',SuperAdminRoleMiddleware::class.':3'])->group(fu
     });
 });
 
-Route::middleware(['auth:admin',AdminRoleMiddleware::class.':2,3'])->group(function(){
+Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(function(){
     Route::get('/home', [DashboardController::class, 'dashboard'])->name('home');
     Route::controller(ProductsController::class)->group(function(){
         Route::get('/products', 'home')->name('products');
@@ -60,18 +61,18 @@ Route::middleware(['auth:admin',AdminRoleMiddleware::class.':2,3'])->group(funct
         Route::delete('/employee/delete/{id}', 'delete')->name('employee.delete');
     });
 });
+// User register below
 Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
-    Route::get('/register', [RegisterUserController::class, 'registerUserView'])->name('registerUserView');
-    Route::post('/register/user', [RegisterUserController::class, 'register'])->name('register.user');
+    Route::get('/register', [RegisterUserController::class, 'registerUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('registerUserView');
+    Route::post('/register/user', [RegisterUserController::class, 'register'])->withoutMiddleware(UserAuthMiddleware::class)->name('register.user');
     Route::get('email/verify', function () {
         return view('user/auth/verify-email');
     })->name('verification.notice');
-
     Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->name('verification.verify');
     Route::post('email/resend', [AuthUserController::class, 'resend'])->name('verification.resend');
-
+    Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
 });
-Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
+
 
 // Login admin below
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');

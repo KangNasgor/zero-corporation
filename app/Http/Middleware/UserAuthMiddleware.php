@@ -17,7 +17,9 @@ class UserAuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-
+        if(!$user){
+            return redirect()->route('registerUserView');
+        }
         return $next($request);
     }
 }
