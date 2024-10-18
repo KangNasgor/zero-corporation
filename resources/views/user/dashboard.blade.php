@@ -7,11 +7,13 @@
     <title>Home</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-slate-900">
-    <div class="flex flex-col gap-1 mt-5 ml-5 w-fit" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
-        <div class="h-1 w-6 bg-white transition" id="bar-1"></div>
-        <div class="h-1 w-6 bg-white transition" id="bar-2"></div>
-        <div class="h-1 w-6 bg-white transition" id="bar-3"></div>
+<body class="bg-slate-900 h-screen">
+    <div class="flex flex-col gap-1 ml-5 w-fit z-40" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
+        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
+        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
+        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
+    </div>
+    <div class="h-full fixed w-2/12 bg-slate-700 z-30 overflow-x-hidden -translate-x-full transition" id="sidebar">
     </div>
     <a href="{{ route('logout.user') }}" class="w-fit block mx-auto">
         <div class="bg-slate-800 text-white p-5 rounded-md w-fit mt-10">
@@ -22,6 +24,7 @@
 </html>
 <script>
     let opened = false;
+    const sidebar = document.getElementById('sidebar');
     function openMenu(bar1Id, bar2Id, bar3Id){
         const bar1 = document.getElementById(bar1Id);
         const bar2 = document.getElementById(bar2Id);
@@ -31,12 +34,16 @@
             bar2.style.opacity = "0";
             bar3.style.transform = "translate(0, -8px) rotate(45deg)";
             opened = true;
+            sidebar.classList.add('translate-x-0');
+            sidebar.classList.remove('-translate-x-full');
         }
         else if(opened == true){
             bar1.style.transform = "translate(0, 0) rotate(0)";
             bar2.style.opacity = "100";
             bar3.style.transform = "translate(0, 0) rotate(0)";
             opened = false;
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
         }
         
     }
