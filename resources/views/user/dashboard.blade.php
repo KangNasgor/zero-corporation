@@ -9,8 +9,10 @@
 </head>
 <body class="bg-slate-900">
     <h1 class="text-white text-center">Berhasil Log In Kang! Mantap</h1>
-    <a class="bg-slate-800 text-white p-5 rounded-md" href="{{ route('logout.user') }}">
-        Logout
+    <a href="{{ route('logout.user') }}" class="w-fit block mx-auto">
+        <div class="bg-slate-800 text-white p-5 rounded-md w-fit mt-10">
+            Logout
+        </div>
     </a>
 </body>
 </html>

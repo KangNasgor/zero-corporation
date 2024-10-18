@@ -15,9 +15,19 @@ class AuthUserController extends Controller
 
         return redirect()->route('dashboard.user');
     }
+    public function verificationNotice(){
+        if (Auth::check()) {
+            if (Auth::user()->hasVerifiedEmail()) {
+                return redirect()->route('dashboard.user');
+            } else {
+                return view('user.auth.verify-email');
+            }
+        }
+        return redirect()->route('login');
+    }
     public function resend(Request $request){
         $request->user()->sendEmailVerificationNotification();
-        return back()->with('message', 'Verification link sent!');
+        return back()->with('resent', 'Sudah dikirim masbro');
     }
     public function logout(Request $req){
         Auth::logout();

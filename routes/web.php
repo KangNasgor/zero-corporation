@@ -67,9 +67,7 @@ Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
     // User registration
     Route::get('/register', [RegisterUserController::class, 'registerUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('registerUserView');
     Route::post('/register/user', [RegisterUserController::class, 'register'])->withoutMiddleware(UserAuthMiddleware::class)->name('register.user');
-    Route::get('email/verify', function () {
-        return view('user/auth/verify-email');
-    })->name('verification.notice');
+    Route::get('email/verify', [AuthUserController::class, 'verificationNotice'])->name('verification.notice');
     Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->name('verification.verify');
     Route::post('email/resend', [AuthUserController::class, 'resend'])->name('verification.resend');
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
