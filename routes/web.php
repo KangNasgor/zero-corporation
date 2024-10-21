@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ProfileUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Admin\AdminController;
 use App\Http\Controllers\Admin\Employee\EmployeeController;
@@ -71,12 +71,13 @@ Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
     Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->name('verification.verify');
     Route::post('email/resend', [AuthUserController::class, 'resend'])->name('verification.resend');
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
-
     // User login
     Route::get('/login/user', [LoginUserController::class, 'loginUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('loginUserView');
     Route::post('/login/user/submit', [LoginUserController::class, 'login'])->withoutMiddleware(UserAuthMiddleware::class)->name('login.user');
     // User logout
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
+    // User Profile
+    Route::get('/profile/user', [ProfileUserController::class, 'profile'])->name('profile.user');
 });
 
 

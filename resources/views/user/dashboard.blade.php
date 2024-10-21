@@ -6,17 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     @vite('resources/css/app.css')
+    <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-slate-900 h-screen">
-    <div class="flex flex-col gap-1 ml-5 w-fit z-40" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
+    <div class="flex flex-col gap-1 ml-5 w-fit fixed z-40 mt-5" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
     </div>
-    <div class="h-full fixed w-2/12 bg-slate-700 z-30 overflow-x-hidden -translate-x-full transition" id="sidebar">
+    <div class="h-full fixed w-2/12 bg-slate-700 text-center pt-12 z-30 overflow-x-hidden -translate-x-full transition" id="sidebar">
+        <a href="{{ route('profile.user') }}">
+            <div class="bg-slate-600 py-4 flex justify-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-user text-white"></i>
+                    <p class="text-white w-fit">Profile</p>
+                </div>
+            </div>
+        </a>
     </div>
     <a href="{{ route('logout.user') }}" class="w-fit block mx-auto">
-        <div class="bg-slate-800 text-white p-5 rounded-md w-fit mt-10">
+        <div class="bg-slate-800 text-white p-5 rounded-md w-fit">
             Logout
         </div>
     </a>
@@ -45,6 +54,5 @@
             sidebar.classList.remove('translate-x-0');
             sidebar.classList.add('-translate-x-full');
         }
-        
     }
 </script>
