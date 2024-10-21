@@ -8,33 +8,43 @@
         <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-slate-800 grid place-items-center h-screen">
-        <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto" method="POST" action="{{ route('register.user') }}">
-            @csrf
-            @method('POST')
-            <div class="w-full mx-auto flex flex-col gap-5">
-                <h1 class="text-xl text-white w-fit mx-auto">Daftar dulu kang!</h1>
-                <div>
-                    <h1 class="text-white w-fit mb-2">Nama</h1>
-                    <input class="mx-auto w-full rounded-md px-2 py-1" name="name" placeholder="Nama lu tulis disini">
-                </div>
-                <div>
-                    <h1 class="text-white w-fit mb-2">Email</h1>
-                    <input class="mx-auto w-full rounded-md px-2 py-1" name="email" type="email" placeholder="email lu jg ditulis disini">
-                </div>
-                <div class="w-full">
-                    <h1 class="text-white w-fit mb-2">Password</h1>
-                    <div class="flex items-center gap-2">
-                        <input class="mx-auto w-full rounded-md px-2 py-1" type="password" name="password" id="password" placeholder="password lu kang">
-                        <i class="fa-regular fa-eye text-white block min-w-6" id="eyeOn"></i>
-                        <i class="fa-regular fa-eye-slash text-white hidden min-w-6" id="eyeOff"></i>
+    <body class="bg-slate-800 h-screen">
+        <div>
+            <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto" method="POST" action="{{ route('register.user') }}">
+                @csrf
+                @method('POST')
+                <div class="w-full mx-auto flex flex-col gap-5">
+                    <h1 class="text-xl text-white w-fit mx-auto">Daftar dulu kang!</h1>
+                    <div>
+                        <h1 class="text-white w-fit mb-2">Nama</h1>
+                        <input class="mx-auto w-full rounded-md px-2 py-1" name="name" placeholder="Nama lu tulis disini">
                     </div>
+                    <div>
+                        <h1 class="text-white w-fit mb-2">Email</h1>
+                        <input class="mx-auto w-full rounded-md px-2 py-1" name="email" type="email" placeholder="email lu jg ditulis disini">
+                    </div>
+                    <div class="w-full">
+                        <h1 class="text-white w-fit mb-2">Password</h1>
+                        <div class="flex items-center gap-2">
+                            <input class="mx-auto w-full rounded-md px-2 py-1" type="password" name="password" id="password" placeholder="password lu kang">
+                            <i class="fa-regular fa-eye text-white block min-w-6" id="eyeOn"></i>
+                            <i class="fa-regular fa-eye-slash text-white hidden min-w-6" id="eyeOff"></i>
+                        </div>
+                    </div>
+                    <a class="text-sm text-cyan-400 text-center" href="{{ route('loginUserView') }}">Udah punya akun? gas login kang!</a>
+                    <button class="bg-slate-500 w-fit rounded-md py-2 px-3 mx-auto text-white" type="submit">
+                        Gas!
+                    </button>
                 </div>
-                <button class="bg-slate-500 w-fit rounded-md py-2 px-3 mx-auto text-white" type="submit">
-                    Gas!
-                </button>
+            </form>
+        </div>
+        @if ($errors->any())
+            <div class="bg-red-600/50 border w-fit mx-auto border-red-600 py-9 px-5 rounded-md">
+                @foreach ($errors->all() as $error)
+                    <p class="text-sm text-white">{{ $error }}</p>
+                @endforeach
             </div>
-        </form>
+        @endif
     </body>
 </html>
 <script>

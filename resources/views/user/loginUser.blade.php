@@ -27,6 +27,7 @@
                             <i class="fa-regular fa-eye-slash text-white hidden min-w-6" id="eyeOff"></i>
                         </div>
                     </div>
+                    <a class="text-sm text-cyan-400" href="{{ route('registerUserView') }}">Belum punya akun? daftar dulu kang!</a>
                     <button class="bg-slate-500 w-fit rounded-md py-2 px-3 mx-auto text-white" type="submit">
                         Gas!
                     </button>

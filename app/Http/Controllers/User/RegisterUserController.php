@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;    
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterUserController extends Controller
 {
@@ -17,6 +18,11 @@ class RegisterUserController extends Controller
     }
 
     public function register(Request $request){
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email:rfc,dns'],
+            'password' => ['required'],
+        ]);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
