@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>{{ $title->value }}</title>
     @vite('resources/css/app.css')
     <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-slate-900 h-screen">
-    <div class="flex flex-col gap-1 ml-5 w-fit fixed z-40 mt-5" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
+    <div class="flex flex-col gap-1 ml-5 w-fit fixed z-40 mt-5 cursor-pointer" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>

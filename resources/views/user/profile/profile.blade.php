@@ -17,7 +17,7 @@
     </a>
     <div class="bg-slate-800 w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
         <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
-            <h1 class="text-white text-xl text-center">User Data</h1>
+            <h1 class="text-white text-xl text-center mb-3">User Data</h1>
             <p class="text-white">Nama : {{ Auth::user()->name }}</p>
             <p class="text-white">Email : {{ Auth::user()->email }}</p>
         </div>

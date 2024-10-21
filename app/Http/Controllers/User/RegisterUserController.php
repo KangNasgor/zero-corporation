@@ -29,8 +29,7 @@ class RegisterUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Auth::login($user);
-        event(new Registered($user));
-        return redirect()->route('verification.notice'); // Redirect to verification notice
+        event(new Registered($user)); // This send an email to the designated email
+        return redirect()->route('verification.notice'); // Redirect to verification page
     }
-
 }

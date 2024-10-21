@@ -61,7 +61,19 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
         Route::put('/employee/restore/{id}', 'restore')->name('employee.restore');
         Route::delete('/employee/delete/{id}', 'delete')->name('employee.delete');
     });
+    Route::controller(UserDashboardController::class)->group(function(){
+        Route::get('/dashboarduser', 'dashboarduser')->name('dashboarduser');
+        Route::get('/dashboarduser/create', 'createDashboardView')->name('dashboardCreateView');
+        Route::post('/dashboarduser/create/submit', 'createDashboard')->name('dashboard.create');
+        Route::get('/dashboard/update/{id}', 'updateDashboardView')->name('dashboardUpdateView');
+        Route::put('/dashboard/update/submit/{id}', 'updateDashboard')->name('dashboard.update');
+        Route::get('/dashboard/history', 'dashboardHistory')->name('dashboard.history');
+        Route::put('/dashboard/softdelete/{id}', 'dashboardSoftDelete')->name('dashboard.sotfdelete');
+        Route::put('/dashboard/restore/{id}', 'dashboardRestore')->name('dashboard.restore');
+        Route::delete('/dashboard/delete/{id}', 'dashboardDelete')->name('dashboard.delete');
+    });
 });
+
 // User register below
 Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
     // User registration
