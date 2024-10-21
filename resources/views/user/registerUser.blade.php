@@ -9,7 +9,7 @@
         @vite('resources/css/app.css')
     </head>
     <body class="bg-slate-800 h-screen">
-        <div>
+        <div class="h-screen flex flex-col justify-center gap-3">
             <form class="bg-slate-700 w-fit p-5 rounded-md mx-auto" method="POST" action="{{ route('register.user') }}">
                 @csrf
                 @method('POST')
@@ -37,14 +37,14 @@
                     </button>
                 </div>
             </form>
+            @if ($errors->any())
+                <div class="bg-red-600/50 border w-fit mx-auto border-red-600 py-9 px-5 rounded-md">
+                    @foreach ($errors->all() as $error)
+                        <p class="text-sm text-white">{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
         </div>
-        @if ($errors->any())
-            <div class="bg-red-600/50 border w-fit mx-auto border-red-600 py-9 px-5 rounded-md">
-                @foreach ($errors->all() as $error)
-                    <p class="text-sm text-white">{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
     </body>
 </html>
 <script>
