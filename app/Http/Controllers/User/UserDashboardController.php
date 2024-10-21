@@ -12,7 +12,8 @@ class UserDashboardController extends Controller
 {
     public function home(): View{
         $title = Userdashboard::where('name', 'title')->first();
-        return view('user/dashboard', compact('title'));
+        $headingText = Userdashboard::where('name', 'Heading Text')->first();
+        return view('user/dashboard', compact('title', 'headingText'));
     }
     public function dashboarduser(Request $req){
         $search = $req->input('search');
