@@ -17,16 +17,16 @@
                     <h1 class="text-xl text-white w-fit mx-auto">Daftar dulu kang!</h1>
                     <div>
                         <h1 class="text-white w-fit mb-2">Nama</h1>
-                        <input class="mx-auto w-full rounded-md px-2 py-1" name="name" placeholder="Nama lu tulis disini">
+                        <input class="mx-auto w-full rounded-md px-2 py-1" name="name">
                     </div>
                     <div>
                         <h1 class="text-white w-fit mb-2">Email</h1>
-                        <input class="mx-auto w-full rounded-md px-2 py-1" name="email" type="email" placeholder="email lu jg ditulis disini">
+                        <input class="mx-auto w-full rounded-md px-2 py-1" name="email" type="email">
                     </div>
                     <div class="w-full">
                         <h1 class="text-white w-fit mb-2">Password</h1>
                         <div class="flex items-center gap-2">
-                            <input class="mx-auto w-full rounded-md px-2 py-1" type="password" name="password" id="password" placeholder="password lu kang">
+                            <input class="mx-auto w-full rounded-md px-2 py-1" type="password" name="password" id="password" >
                             <i class="fa-regular fa-eye text-white block min-w-6" id="eyeOn"></i>
                             <i class="fa-regular fa-eye-slash text-white hidden min-w-6" id="eyeOff"></i>
                         </div>

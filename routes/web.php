@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\ProfileUserController;
+use App\Http\Middleware\UserVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Admin\AdminController;
 use App\Http\Controllers\Admin\Employee\EmployeeController;
@@ -75,25 +76,26 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
 });
 
 // User register below
-Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
-    // User registration
-    Route::get('/register', [RegisterUserController::class, 'registerUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('registerUserView');
-    Route::post('/register/user', [RegisterUserController::class, 'register'])->withoutMiddleware(UserAuthMiddleware::class)->name('register.user');
-    Route::get('email/verify', [AuthUserController::class, 'verificationNotice'])->name('verification.notice');
-    Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->name('verification.verify');
+Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class])->group(function(){
+        // User verification
+    Route::get('email/verify', [AuthUserController::class, 'verificationNotice'])->withoutMiddleware(UserVerificationMiddleware::class)->name('verification.notice');
+    Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->withoutMiddleware(UserVerificationMiddleware::class)->name('verification.verify');
     Route::post('email/resend', [AuthUserController::class, 'resend'])->name('verification.resend');
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
-    // User login
-    Route::get('/login/user', [LoginUserController::class, 'loginUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('loginUserView');
-    Route::post('/login/user/submit', [LoginUserController::class, 'login'])->withoutMiddleware(UserAuthMiddleware::class)->name('login.user');
     // User logout
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
     // User Profile
     Route::get('/profile/user', [ProfileUserController::class, 'profile'])->name('profile.user');
     Route::put('/profile/user/update/{id}', [ProfileUserController::class, 'edit'])->name('profile.update');
 });
-
-
+Route::middleware(['web'])->group(function(){
+    // User registration
+    Route::get('/register', [RegisterUserController::class, 'registerUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('registerUserView');
+    Route::post('/register/user', [RegisterUserController::class, 'register'])->withoutMiddleware(UserAuthMiddleware::class)->name('register.user');
+    // User login
+    Route::get('/login/user', [LoginUserController::class, 'loginUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('loginUserView');
+    Route::post('/login/user/submit', [LoginUserController::class, 'login'])->withoutMiddleware(UserAuthMiddleware::class)->name('login.user');
+});
 // Login admin below
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login/admin', [LoginController::class, 'loginAdmin'])->name('login.admin');

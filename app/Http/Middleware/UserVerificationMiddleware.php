@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class UserAuthMiddleware
+class UserVerificationMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,8 @@ class UserAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        if(!$user){
-            return redirect()->route('registerUserView');
+        if(is_null(Auth::user()->email_verified_at)){
+            return redirect()->route('verification.notice');
         }
         return $next($request);
     }
