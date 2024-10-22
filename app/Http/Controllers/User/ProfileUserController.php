@@ -23,14 +23,16 @@ class ProfileUserController extends Controller{
                 'name' => $req->input('name'),
                 'email' => $req->input('email'),
             ]);
+            return redirect()->route('profile.user');
         }
         else{
             $user->update([
                 'name' => $req->input('name'),
                 'email' => $req->input('email'),
+                'email_verified_at' => null,
             ]);
             event(new Registered($user));
+            return redirect()->route('verification.notice');
         }
-        return redirect()->route('profile.user');
     }
 }
