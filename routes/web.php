@@ -90,6 +90,7 @@ Route::middleware(['web', UserAuthMiddleware::class])->group(function(){
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
     // User Profile
     Route::get('/profile/user', [ProfileUserController::class, 'profile'])->name('profile.user');
+    Route::put('/profile/user/update/{id}', [ProfileUserController::class, 'edit'])->name('profile.update');
 });
 
 

@@ -18,8 +18,21 @@
     <div class="bg-slate-800 w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
         <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
             <h1 class="text-white text-xl text-center mb-3">User Data</h1>
-            <p class="text-white">Nama : {{ Auth::user()->name }}</p>
-            <p class="text-white">Email : {{ Auth::user()->email }}</p>
+            <div class="flex flex-col gap-1" id="data">
+                <p class="text-white">Nama : {{ Auth::user()->name }}</p>
+                <p class="text-white">Email : {{ Auth::user()->email }}</p>
+                <i class="fa-solid fa-pen-to-square text-white cursor-pointer w-fit" id="edit-data" onclick="openEditMode()"></i>
+            </div>
+            <form class="hidden grid-cols-2 gap-1" id="input-data" action="{{ route('profile.update', Auth::user()->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <label class="text-white w-fit">Nama :</label>
+                <input class="rounded-md px-2" value="{{ Auth::user()->name }}" name="name">
+                <label class="text-white w-fit">Email :</label>
+                <input class="rounded-md px-2" value="{{ Auth::user()->email }}" name="email">
+                <button type="submit" id="submit" class="bg-cyan-500 rounded-md py-1" onclick="closeEditMode()">Submit</button>
+                <button type="button" id="cancel" class="bg-red-600 rounded-md py-1" onclick="closeEditMode()">Cancel</button>
+            </form>
         </div>
         <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
             ..Other data
@@ -33,3 +46,15 @@
     </div>
 </body>
 </html>
+<script>
+    let inputData = document.getElementById("input-data");
+    let data = document.getElementById("data");
+    function openEditMode(){
+        inputData.style.display = "grid";
+        data.style.display = "none";
+    }
+    function closeEditMode(){
+        inputData.style.display = "none";
+        data.style.display = "flex";
+    }
+</script>

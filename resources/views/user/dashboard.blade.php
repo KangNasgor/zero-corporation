@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-slate-900">
-    <div class="flex flex-col gap-1 ml-5 w-fit fixed z-40 mt-5 cursor-pointer" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
+    <div class="flex flex-col gap-1 ml-5 mt-3 w-fit fixed z-40 cursor-pointer" onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
@@ -23,14 +23,14 @@
                 </div>
             </div>
         </a>
-    </div>
-    <div class="h-screen">
-        <h1 class="text-white text-3xl text-center mt-10">{{ $headingText->value }}</h1>
-        <a href="{{ route('logout.user') }}" class="w-fit block mx-auto">
+        <a href="{{ route('logout.user') }}" class="w-fit block absolute left-1/2 transform -translate-x-1/2 bottom-0 mb-5">
             <div class="bg-slate-800 text-white p-5 rounded-md w-fit">
                 Logout
             </div>
         </a>
+    </div>
+    <div class="pt-10">
+        <h1 class="text-white text-3xl text-center">{{ $headingText->value }}</h1>
     </div>
 </body>
 </html>
