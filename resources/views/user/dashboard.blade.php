@@ -54,7 +54,7 @@
                         id="modal-{{ $cont->id }}">
                         <div class="bg-slate-600 w-6/12 p-5 rounded-md">
                             <div class="flex items-center mb-5">
-                                <div class="flex flex-col gap-px cursor-pointer p-1 close-modal">
+                                <div class="flex flex-col gap-px cursor-pointer p-1 close-modal" data-id="{{ $cont->id }}">
                                     <div class="bg-slate-800 h-px w-3 -rotate-45 translate-y-px"></div>
                                     <div class="bg-slate-800 h-px w-3 rotate-45 -translate-y-px"></div>
                                 </div>
@@ -110,11 +110,19 @@
 
     let productModal = document.querySelectorAll('.modal');
     let product = document.querySelectorAll('.product');
+    let closeModalButton = document.querySelectorAll('.close-modal');
     product.forEach(prod => {
         prod.onclick = function() {
             let id = this.getAttribute("data-id");
             let modal = document.getElementById("modal-" + id);
             modal.style.display = "flex";
+        }
+    });
+    closeModalButton.forEach(closeButton => {
+        closeButton.onclick = function(){
+            let id = this.getAttribute('data-id');
+            let modal = document.getElementById('modal-' + id);
+            modal.style.display = "none";
         }
     });
     window.onclick = function(event) {
