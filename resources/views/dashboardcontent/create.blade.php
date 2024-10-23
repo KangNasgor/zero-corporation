@@ -16,7 +16,7 @@
                 <label class="text-white text-xl">Description</label>
                 <textarea name="description" placeholder="Product description" required class="rounded-md p-2"></textarea>
                 <label class="text-white text-xl">Image</label>
-                <input name="image" type="file" accept="image/*" required class="rounded-md p-2">
+                <input name="image" type="file" accept="image/*" required class="rounded-md p-2 text-white">
                 <label class="text-white text-xl">Status</label>
                 <select name="status" required class="rounded-md p-2">
                     <option value="Active">Active</option>
