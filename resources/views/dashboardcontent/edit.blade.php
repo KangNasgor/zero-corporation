@@ -15,8 +15,10 @@
                 </select>
                 <label class="text-white text-xl">Description</label>
                 <input name="description" type="text" placeholder="Description of the content" required class="rounded-md p-2" value="{{ $dashboardcontent->description }}">
+                <label class="text-white text-xl">Modal Description</label>
+                <textarea name="modal_description" placeholder="Product description" required class="rounded-md p-2"></textarea>
                 <label class="text-white text-xl">Image</label>
-                <input name="image" type="file" class="rounded-md p-2 text-white">
+                <input name="image" type="file" class="rounded-md p-2 text-white" value="{{ $dashboardcontent->image }}">
                 <label class="text-white text-xl">Status</label>
                 <select name="status" required class="rounded-md p-2">
                     <option value="active" {{ $dashboardcontent->status == 'active' ? 'selected' : '' }}>Active</option>

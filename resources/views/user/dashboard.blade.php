@@ -65,11 +65,7 @@
                                 </div>
                                 <div class="w-6/12">
                                     <h1 class="text-2xl font-semibold mb-5">{{ $cont->product->name }}</h1>
-                                    <p>
-                                        A high-scale website packed with essential features to meet your every need. It
-                                        offers seamless functionality, a user-friendly interface, and responsive design,
-                                        ensuring smooth performance across all devices.
-                                    </p>
+                                    <p>{{ $cont->modal_description }}</p>
                                 </div>
                             </div>
                         </div>

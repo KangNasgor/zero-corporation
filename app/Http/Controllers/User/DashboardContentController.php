@@ -35,6 +35,7 @@ class DashboardContentController extends Controller{
         $validate = Validator::make($req->all(), [
             'product_id' => ['bail', 'required'],
             'description' => ['bail', 'required', 'max:255'],
+            'modal_description' => ['bail', 'required'],
             'image' => ['bail', 'required', 'image'],
             'status' => ['required']
         ]);
@@ -45,6 +46,7 @@ class DashboardContentController extends Controller{
             Dashboard_Content::create([
                 'product_id' => $req->input('product_id'),
                 'description' => $req->input('description'),
+                'modal_description' => $req->input('modal_description'),
                 'image' => $image,
                 'status' => $req->input('status')
             ]);
@@ -64,6 +66,7 @@ class DashboardContentController extends Controller{
         $validate = Validator::make($req->all(), [
             'product_id' => ['bail', 'required'],
             'description' => ['bail', 'required', 'max:255'],
+            'modal_description' => ['bail', 'required'],
             'image' => ['bail', 'nullable', 'mimes:jpg,jpeg,png'],
             'status' => ['required']
         ]);
@@ -76,6 +79,7 @@ class DashboardContentController extends Controller{
             $dashboardcontent->update([
                 'product_id' => $req->input('product_id'),
                 'description' => $req->input('description'),
+                'modal_description' => $req->input('modal_description'),
                 'image' => $image,
                 'status' => $req->input('status')
             ]);

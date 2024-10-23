@@ -13,6 +13,7 @@ class Dashboard_content extends Model
         'id',
         'product_id',
         'description',
+        'modal_description',
         'status',
         'image',
     ];

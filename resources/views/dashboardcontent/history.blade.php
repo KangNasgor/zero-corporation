@@ -27,6 +27,7 @@
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">ID</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Title</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Description</th>
+                        <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Modal Desc</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Image</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Status</th>
                         <th class="border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-left">Options</th>
@@ -43,6 +44,7 @@
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $content->id }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $content->product->name }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $content->description }}</td>
+                                <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $content->modal_description }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">
                                     <img src="{{ asset('storage/' . $content->image) }}" alt="Image" class="w-16 h-16 object-cover">
                                 </td>
