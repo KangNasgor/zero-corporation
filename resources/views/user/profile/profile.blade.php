@@ -34,15 +34,6 @@
                 <button type="button" id="cancel" class="bg-red-600 rounded-md py-1" onclick="closeEditMode()">Cancel</button>
             </form>
         </div>
-        <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
-            ..Other data
-        </div>
-        <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
-            ..Other data
-        </div>
-        <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
-            ..Other data
-        </div>
     </div>
 </body>
 </html>
