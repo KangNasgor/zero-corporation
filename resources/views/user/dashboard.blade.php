@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title->value }}</title>
+    <title>{{ $title }}</title>
     @vite('resources/css/app.css')
     <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
 </head>
@@ -30,7 +30,27 @@
         </a>
     </div>
     <div class="pt-10">
-        <h1 class="text-white text-3xl text-center">{{ $headingText->value }}</h1>
+        <section class="h-screen">
+            <h1 class="text-white text-3xl text-center">{{ $headingText }}</h1>
+        </section>
+        <section class="h-screen flex items-center">
+            <div class="bg-slate-700 rounded-md w-9/12 p-5 mx-auto grid grid-cols-3 text-white">
+                <div class=" bg-slate-500 w-9/12 rounded-md">
+                    <img src="{{ asset('assets/website.jpg') }}" alt="Website">
+                    <div class="p-3">
+                        <h1 class="text-xl mb-2">{{ $content1 }}</h1>
+                        <p class="text-sm">A high scale website with many features to support your needs.</p>
+                    </div>
+                </div>
+                <div class=" bg-slate-500 w-9/12 rounded-md">
+                    <img src="{{ asset('assets/AI.jpg') }}" alt="Website">
+                    <div class="p-3">
+                        <h1 class="text-xl mb-2">{{ $content2 }}</h1>
+                        <p class="text-sm">An artifical intelligence that will support your work to the fullest.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>

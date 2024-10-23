@@ -11,9 +11,19 @@ use Illuminate\Support\Facades\DB;
 class UserDashboardController extends Controller
 {
     public function home(): View{
-        $title = Userdashboard::where('name', 'title')->first();
-        $headingText = Userdashboard::where('name', 'Heading Text')->first();
-        return view('user/dashboard', compact('title', 'headingText'));
+        $dashboardData = Userdashboard::whereIn('name', [
+            'title',
+            'Heading Text',
+            'content1',
+            'content2'
+            ])->pluck('value', 'name');
+
+        return view('user/dashboard', [
+            'title' => $dashboardData['title'] ?? null,
+            'headingText' => $dashboardData['Heading Text'] ?? null,
+            'content1' => $dashboardData['content1'] ?? null,
+            'content2' => $dashboardData['content2'] ?? null,
+        ]);
     }
     public function dashboarduser(Request $req){
         $search = $req->input('search');
