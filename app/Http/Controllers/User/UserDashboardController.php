@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Dashboard_content;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
@@ -14,16 +15,14 @@ class UserDashboardController extends Controller
         $dashboardData = Userdashboard::whereIn('name', [
             'title',
             'Heading Text',
-            'content1',
-            'content2'
             ])->pluck('value', 'name');
 
+        $content = Dashboard_content::with('product')->where('status', 'active')->get();
         return view('user/dashboard', [
             'title' => $dashboardData['title'] ?? null,
             'headingText' => $dashboardData['Heading Text'] ?? null,
-            'content1' => $dashboardData['content1'] ?? null,
-            'content2' => $dashboardData['content2'] ?? null,
-        ]);
+        ],
+        compact('content'));
     }
     public function dashboarduser(Request $req){
         $search = $req->input('search');
@@ -51,7 +50,7 @@ class UserDashboardController extends Controller
         Userdashboard::create([
             'name' => $req->input('name'),
             'value' => $req->input('value'),
-            'status' => $req->input('status')
+            'status' => $req->input('status'),
         ]);
         return redirect()->route('dashboarduser');
     }

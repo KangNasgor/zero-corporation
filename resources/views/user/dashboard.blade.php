@@ -35,20 +35,15 @@
         </section>
         <section class="h-screen flex items-center">
             <div class="bg-slate-700 rounded-md w-9/12 p-5 mx-auto grid grid-cols-3 text-white">
-                <div class=" bg-slate-500 w-9/12 rounded-md">
-                    <img src="{{ asset('assets/website.jpg') }}" alt="Website">
-                    <div class="p-3">
-                        <h1 class="text-xl mb-2">{{ $content1 }}</h1>
-                        <p class="text-sm">A high scale website with many features to support your needs.</p>
+                @foreach ($content as $cont)
+                    <div class=" bg-slate-500 w-9/12 rounded-md">
+                        <img src="{{ asset('storage/' . $cont->image) }}" alt="Website">
+                        <div class="p-3">
+                            <h1 class="text-xl mb-2">{{ $cont->product->name }}</h1>
+                            <p class="text-sm">{{ $cont->description }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class=" bg-slate-500 w-9/12 rounded-md">
-                    <img src="{{ asset('assets/AI.jpg') }}" alt="Website">
-                    <div class="p-3">
-                        <h1 class="text-xl mb-2">{{ $content2 }}</h1>
-                        <p class="text-sm">An artifical intelligence that will support your work to the fullest.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
     </div>

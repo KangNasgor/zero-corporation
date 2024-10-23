@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Products\ProductsController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\User\DashboardContentController;
 use App\Http\Controllers\User\AuthUserController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\RegisterUserController;
@@ -73,6 +74,19 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
         Route::put('/dashboard/restore/{id}', 'dashboardRestore')->name('dashboard.restore');
         Route::delete('/dashboard/delete/{id}', 'dashboardDelete')->name('dashboard.delete');
     });
+    Route::controller(DashboardContentController::class)->group(function(){
+        Route::get('/dashboardcontent', 'dashboardContent')->name('dashboardcontent');
+        Route::get('/dashboardcontent/search', 'search')->name('dashboardcontent.search');
+        Route::get('/dashboardcontent/create', 'createView')->name('dashboardcontent.create');
+        Route::post('/dashboardcontent/create/store', 'create');
+        Route::get('/dashboardcontent/edit/{id}', 'updateView')->name('dashboardcontent.editpage');
+        Route::put('/dashboardcontent/edit/update/{id}', 'update')->name('dashboardcontent.edit');
+        Route::get('/dashboardcontent/history', 'history')->name('dashboardcontent.history');
+        Route::put('/dashboardcontent/softdel/{id}', 'softdelete')->name('dashboardcontent.softdelete');
+        Route::put('/dashboardcontent/restore/{id}', 'restore')->name('dashboardcontent.restore');
+        Route::delete('/dashboardcontent/delete/{id}', 'delete')->name('dashboardcontent.delete');
+    });
+    
 });
 
 // User register below
