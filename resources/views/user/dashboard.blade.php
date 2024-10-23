@@ -65,7 +65,12 @@
                                 </div>
                                 <div class="w-6/12">
                                     <h1 class="text-2xl font-semibold mb-5">{{ $cont->product->name }}</h1>
-                                    <p>{{ $cont->modal_description }}</p>
+                                    <p class="mb-5">{{ $cont->modal_description }}</p>
+                                    <a href="{{ 'https://wa.me/6288232841353/?text=Hello!+I+want+to+buy+' . $cont->product->name }}" target="_blank">
+                                        <button class="text-white bg-slate-800 py-2 px-3 rounded-md">
+                                            Buy
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
