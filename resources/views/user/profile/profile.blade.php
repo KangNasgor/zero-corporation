@@ -22,6 +22,9 @@
                 <p class="text-white">Nama : {{ Auth::user()->name }}</p>
                 <p class="text-white">Email : {{ Auth::user()->email }}</p>
                 <i class="fa-solid fa-pen-to-square text-white cursor-pointer w-fit" id="edit-data" onclick="openEditMode()"></i>
+                <a href="{{ route('password.request') }}">
+                    <button type="button" class="w-1/2 bg-slate-800 mt-2 rounded-md p-1 text-white text-sm">Change password</button>
+                </a>
             </div>
             <form class="hidden grid-cols-2 gap-1" id="input-data" action="{{ route('profile.update', Auth::user()->id) }}" method="POST">
                 @csrf

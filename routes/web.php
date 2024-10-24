@@ -3,6 +3,8 @@
 use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Middleware\UserVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Admin\Admin\AdminController;
 use App\Http\Controllers\Admin\Employee\EmployeeController;
 use App\Http\Controllers\Admin\Products\ProductsController;
@@ -17,6 +19,10 @@ use App\Http\Controllers\User\LoginUserController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
+use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 // Admin routes below
 Route::middleware(['auth:admin', SuperAdminRoleMiddleware::class.':3'])->group(function(){
@@ -109,6 +115,41 @@ Route::middleware(['web'])->group(function(){
     // User login
     Route::get('/login/user', [LoginUserController::class, 'loginUserView'])->withoutMiddleware(UserAuthMiddleware::class)->name('loginUserView');
     Route::post('/login/user/submit', [LoginUserController::class, 'login'])->withoutMiddleware(UserAuthMiddleware::class)->name('login.user');
+    // Password reset
+    Route::get('/change-password', function () {
+        return view('user.auth.change-password');
+    })->name('password.request');
+    Route::post('/change-password', function (Request $request) {
+        $request->validate(['email' => 'required|email']); // validate designated email 
+        $status = Password::sendResetLink(
+            $request->only('email') // sending reset link using laravel's password broker (Password) it retrieves user's record by defining users table in password in auth.php
+        );
+        return $status === Password::RESET_LINK_SENT ? back()->with(['status' => __($status)]) : back()->withErrors(['email' => __($status)]); 
+    })->name('password.email'); // if reset password link is sent user can open their email to find the reset link
+    Route::get('/reset-password/{token}', function (string $token) {
+        return view('user.auth.reset-password', ['token' => $token]);
+    })->name('password.reset');
+    Route::post('/reset-password', function (Request $request) {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]); // validate 
+     
+        $status = Password::reset( // reset is Password's static method, it accepts two params, creds array and closure (anon function) that defines how to handle user reset password
+            $request->only('email', 'password', 'password_confirmation', 'token'), // retrieving request
+            function (User $user, string $password) { // executes when password reset is successful 
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+                $user->save();
+                event(new PasswordReset($user)); // listening to $user
+            }
+        );
+        return $status === Password::PASSWORD_RESET
+                    ? redirect()->route('login')->with('status', __($status))
+                    : back()->withErrors(['email' => [__($status)]]);
+    })->name('password.update');
 });
 // Login admin below
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
