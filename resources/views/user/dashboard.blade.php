@@ -21,9 +21,9 @@
         id="sidebar">
         <a href="{{ route('profile.user') }}">
             <div class="bg-slate-600 py-4 flex justify-center">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 text-xl">
                     <i class="fa-regular fa-user text-white"></i>
-                    <p class="text-white w-fit">Profile</p>
+                    <p class="text-white w-fit">PROFILE</p>
                 </div>
             </div>
         </a>
@@ -55,8 +55,8 @@
                         <div class="bg-slate-600 w-6/12 p-5 rounded-md">
                             <div class="flex items-center mb-5">
                                 <div class="flex flex-col gap-px cursor-pointer p-1 close-modal" data-id="{{ $cont->id }}">
-                                    <div class="bg-slate-800 h-px w-3 -rotate-45 translate-y-px"></div>
-                                    <div class="bg-slate-800 h-px w-3 rotate-45 -translate-y-px"></div>
+                                    <div class="bg-slate-800 h-1 w-6 -rotate-45 translate-y-[2.8px]"></div>
+                                    <div class="bg-slate-800 h-1 w-6 rotate-45 -translate-y-[2.8px]"></div>
                                 </div>
                             </div>
                             <div class="w-full flex items-center gap-5">
