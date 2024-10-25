@@ -36,6 +36,11 @@
                 <button type="submit" id="submit" class="bg-cyan-500 rounded-md py-1" onclick="closeEditMode()">Submit</button>
                 <button type="button" id="cancel" class="bg-red-600 rounded-md py-1" onclick="closeEditMode()">Cancel</button>
             </form>
+            <a href="{{ route('logout.user') }}" class="w-fit block mt-3">
+                <div class="bg-red-600 text-white px-4 py-3 rounded-md w-fit">
+                    Logout
+                </div>
+            </a>
         </div>
     </div>
 </body>

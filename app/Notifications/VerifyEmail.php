@@ -35,9 +35,9 @@ class VerifyEmail extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Mantap Kang!')
-                    ->action('Klik', url('/'))
-                    ->line('GG gemink');
+                    ->line('Please verify your email')
+                    ->action('Here', url('/'))
+                    ->line('good boy');
     }
 
     /**

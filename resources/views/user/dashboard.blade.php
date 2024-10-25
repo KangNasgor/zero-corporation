@@ -17,22 +17,44 @@
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
     </div>
-    <div class="h-full fixed w-2/12 bg-slate-700 text-center pt-12 z-30 overflow-x-hidden -translate-x-full transition"
+    <div class="h-full fixed w-7/12 md:w-2/12 bg-slate-800 text-center pt-12 z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
         id="sidebar">
-        <a href="{{ route('profile.user') }}">
-            <div class="bg-slate-600 py-4 flex justify-center">
-                <div class="flex items-center gap-2 text-xl">
-                    <i class="fa-regular fa-user text-white"></i>
-                    <p class="text-white w-fit">PROFILE</p>
-                </div>
+        <div class="h-full w-10/12 bg-slate-900 mx-auto rounded-md">
+            <div class="pl-3 pt-3 mb-4">
+                <p class="text-sm text-white w-fit">Menu</p>
             </div>
-        </a>
-        <a href="{{ route('logout.user') }}"
-            class="w-fit block absolute left-1/2 transform -translate-x-1/2 bottom-0 mb-5">
-            <div class="bg-slate-800 text-white p-5 rounded-md w-fit">
-                Logout
+            <div class="flex flex-col gap-3 pl-1">
+                <a href="{{ route('dashboard.user') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-lg">
+                            <i class="fa-solid fa-table-columns text-white"></i>
+                            <p class="text-white w-fit">Dashboard</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-lg">
+                            <i class="fa-solid fa-bag-shopping text-white"></i>
+                            <p class="text-white w-fit">Products</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
+            <div class="pl-3 pt-3 mb-4">
+                <p class="text-sm text-white w-fit">Account</p>
+            </div>
+            <div class="flex flex-col gap-3 pl-1">
+                <a href="{{ route('profile.user') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-lg">
+                            <i class="fa-solid fa-user text-white"></i>
+                            <p class="text-white w-fit">Profile</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
     <div class="pt-10">
         <section class="h-screen">
