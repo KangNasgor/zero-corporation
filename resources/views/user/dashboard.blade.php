@@ -55,14 +55,14 @@
     </div>
     <div class="">
         <section class="h-screen mb-20 flex flex-col items-center justify-center gap-3">
-                <h1 class="bg-gradient-to-r from-purple-700 via-purple-300 to-white w-2/4 mx-auto text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
+                <h1 class="bg-gradient-to-r from-purple-700 via-purple-300 to-white w-7/12 mx-auto text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
                     {{ $headingText }}
                 </h1>
                 <div class="flex gap-3">
                     <button class="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
                         Products
                     </button>
-                    <button class="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
+                    <button class="bg-gradient-to-bl from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
                         See more
                     </button>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="bg-[url('/public/assets/person-working.jpg')] bg-cover h-full w-full mx-auto"></div>
                 <div class="w-full absolute top-0 text-base text-center font-semibold bg-gray-500/30 backdrop-blur-sm p-3">
                     <div class="w-full flex items-center justify-center gap-3">
-                        <h1 class="text-white">Trusted by over 100 companies :</h1>
+                        <h1 class="bg-gradient-to-br from-white via-purple-200 to-purple-600 text-transparent bg-clip-text">Trusted by over 100 companies :</h1>
                         <div class="flex gap-3">
                             <img src="{{ asset('assets/riot-games.png') }}" class="w-10 h-10">
                             <img src="{{ asset('assets/tencent.png') }}" class="w-18 h-10">
@@ -84,10 +84,12 @@
             </div>
         </section>
         <section class="h-screen" id="products">    
-            <h1 class="text-white mx-auto text-5xl w-fit mb-5" data-aos="fade-up">Products</h1>
-            <div class="bg-slate-700 rounded-md w-9/12 p-5 mx-auto grid grid-cols-3 text-white" data-aos="fade-up">
+            <h1 class="bg-gradient-to-r from-purple-700 via-purple-400 to-purple-300 bg-clip-text text-transparent font-semibold mx-auto text-6xl tracking-wide w-fit mb-5" data-aos="fade-up">
+                Products
+            </h1>
+            <div class="bg-black rounded-md w-8/12 p-5 mx-auto grid grid-cols-2 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
-                    <div class=" bg-slate-500 w-9/12 mx-auto rounded-md mb-7 transition hover:scale-105 hover:shadow-xl cursor-pointer product"
+                    <div class="bg-gradient-to-t from-purple-950 via-purple-950 to-purple-900 w-9/12 mx-auto rounded-md mb-7 transition hover:scale-105 hover:shadow-xl cursor-pointer product"
                         data-id="{{ $cont->id }}" onclick="openModal()" data-aos="fade-up">
                         <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
                         <div class="p-3">
