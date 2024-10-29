@@ -1,21 +1,18 @@
+@extends('user/user-layout')
+@section('user-layout')
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
-    @vite('resources/css/app.css')
-    <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-slate-900">
+<div class="bg-white">
     <div class="flex flex-col gap-1 ml-5 mt-3 w-fit fixed z-40 cursor-pointer"
         onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
-        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
-        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
-        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
+        <div class="h-1 w-6 bg-black transition rounded-sm" id="bar-1"></div>
+        <div class="h-1 w-6 bg-black transition rounded-sm" id="bar-2"></div>
+        <div class="h-1 w-6 bg-black transition rounded-sm" id="bar-3"></div>
     </div>
     <div class="h-full fixed w-7/12 md:w-2/12 bg-slate-800 text-center pt-12 z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
         id="sidebar">
@@ -26,15 +23,15 @@
             <div class="flex flex-col gap-3 pl-1">
                 <a href="{{ route('dashboard.user') }}">
                     <div class=" flex justify-start w-11/12 mx-auto">
-                        <div class="flex items-center gap-2 text-lg">
+                        <div class="flex items-center gap-2 text-md">
                             <i class="fa-solid fa-table-columns text-white"></i>
                             <p class="text-white w-fit">Dashboard</p>
                         </div>
                     </div>
                 </a>
-                <a href="">
+                <a href="#products">
                     <div class=" flex justify-start w-11/12 mx-auto">
-                        <div class="flex items-center gap-2 text-lg">
+                        <div class="flex items-center gap-2 text-md">
                             <i class="fa-solid fa-bag-shopping text-white"></i>
                             <p class="text-white w-fit">Products</p>
                         </div>
@@ -47,7 +44,7 @@
             <div class="flex flex-col gap-3 pl-1">
                 <a href="{{ route('profile.user') }}">
                     <div class=" flex justify-start w-11/12 mx-auto">
-                        <div class="flex items-center gap-2 text-lg">
+                        <div class="flex items-center gap-2 text-md">
                             <i class="fa-solid fa-user text-white"></i>
                             <p class="text-white w-fit">Profile</p>
                         </div>
@@ -56,16 +53,21 @@
             </div>
         </div>
     </div>
-    <div class="pt-10">
-        <section class="h-screen">
-            <h1 class="text-white text-3xl text-center">{{ $headingText }}</h1>
+    <div class="">
+        <section class="h-screen mb-20">
+            <div class="h-2/4">
+                <h1 class="text-black text-3xl text-center">{{ $headingText }}</h1>
+            </div>
+            <div class="bg-cover h-2/4">
+                <div class="bg-[url('/public/assets/person-working.jpg')] bg-cover h-full mx-auto"></div>
+            </div>
         </section>
-        <section class="h-screen">
-            <h1 class="text-white mx-auto text-5xl w-fit mb-5">Products</h1>
-            <div class="bg-slate-700 rounded-md w-9/12 p-5 mx-auto grid grid-cols-3 text-white">
+        <section class="h-screen" id="products">    
+            <h1 class="text-white mx-auto text-5xl w-fit mb-5" data-aos="fade-up">Products</h1>
+            <div class="bg-slate-700 rounded-md w-9/12 p-5 mx-auto grid grid-cols-3 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
                     <div class=" bg-slate-500 w-9/12 mx-auto rounded-md mb-7 transition hover:scale-105 hover:shadow-xl cursor-pointer product"
-                        data-id="{{ $cont->id }}" onclick="openModal()">
+                        data-id="{{ $cont->id }}" onclick="openModal()" data-aos="fade-up">
                         <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
                         <div class="p-3">
                             <h1 class="text-xl mb-2">{{ $cont->product->name }}</h1>
@@ -100,10 +102,10 @@
                 @endforeach
             </div>
         </section>
+        <section class="h-screen w-full"></section>
     </div>
-</body>
-
-</html>
+</div>
+@endsection
 <script>
     let opened = false;
     const sidebar = document.getElementById('sidebar');
