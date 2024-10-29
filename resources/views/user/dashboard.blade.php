@@ -7,12 +7,12 @@
     <title>{{ $title }}</title>
 </head>
 
-<div class="bg-white">
+<div class="bg-black">
     <div class="flex flex-col gap-1 ml-5 mt-3 w-fit fixed z-40 cursor-pointer"
-        onclick="openMenu('bar-1', 'bar-2', 'bar-3')">
-        <div class="h-1 w-6 bg-black transition rounded-sm" id="bar-1"></div>
-        <div class="h-1 w-6 bg-black transition rounded-sm" id="bar-2"></div>
-        <div class="h-1 w-6 bg-black transition rounded-sm" id="bar-3"></div>
+        onclick="openMenu()">
+        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
+        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
+        <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
     </div>
     <div class="h-full fixed w-7/12 md:w-2/12 bg-slate-800 text-center pt-12 z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
         id="sidebar">
@@ -54,12 +54,33 @@
         </div>
     </div>
     <div class="">
-        <section class="h-screen mb-20">
-            <div class="h-2/4">
-                <h1 class="text-black text-3xl text-center">{{ $headingText }}</h1>
-            </div>
-            <div class="bg-cover h-2/4">
-                <div class="bg-[url('/public/assets/person-working.jpg')] bg-cover h-full mx-auto"></div>
+        <section class="h-screen mb-20 flex flex-col items-center justify-center gap-3">
+                <h1 class="bg-gradient-to-r from-purple-700 via-purple-300 to-white w-2/4 mx-auto text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
+                    {{ $headingText }}
+                </h1>
+                <div class="flex gap-3">
+                    <button class="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
+                        Products
+                    </button>
+                    <button class="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
+                        See more
+                    </button>
+                </div>
+        </section>
+        <section class="h-screen">
+            <div class="h-2/4 w-10/12 relative mx-auto" data-aos="fade-up">
+                <div class="bg-[url('/public/assets/person-working.jpg')] bg-cover h-full w-full mx-auto"></div>
+                <div class="w-full absolute top-0 text-base text-center font-semibold bg-gray-500/30 backdrop-blur-sm p-3">
+                    <div class="w-full flex items-center justify-center gap-3">
+                        <h1 class="text-white">Trusted by over 100 companies :</h1>
+                        <div class="flex gap-3">
+                            <img src="{{ asset('assets/riot-games.png') }}" class="w-10 h-10">
+                            <img src="{{ asset('assets/tencent.png') }}" class="w-18 h-10">
+                            <img src="{{ asset('assets/coca-cola.png') }}" class="w-14 h-10">
+                            <img src="{{ asset('assets/activision.svg') }}" class="w-10 h-10">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="h-screen" id="products">    
@@ -105,17 +126,13 @@
         <section class="h-screen w-full"></section>
     </div>
 </div>
-@endsection
 <script>
     let opened = false;
     const sidebar = document.getElementById('sidebar');
-
-    function openMenu(bar1Id, bar2Id, bar3Id) {
-
-        const bar1 = document.getElementById(bar1Id);
-        const bar2 = document.getElementById(bar2Id);
-        const bar3 = document.getElementById(bar3Id);
-
+    const bar1 = document.getElementById("bar-1");
+    const bar2 = document.getElementById("bar-2");
+    const bar3 = document.getElementById("bar-3");
+    function openMenu() {
         if (opened == false) {
             bar1.style.transform = "translate(0, 8px) rotate(-45deg)";
             bar2.style.opacity = "0";
@@ -156,3 +173,4 @@
         }
     }
 </script>
+@endsection
