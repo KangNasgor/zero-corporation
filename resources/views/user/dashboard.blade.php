@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="">
-        <section class="h-screen mb-20 flex flex-col items-center justify-center gap-3">
+        <section class="h-screen mb-20 flex flex-col items-center justify-center gap-10">
                 <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 w-7/12 mx-auto text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
                     {{ $headingText }}
                 </h1>
@@ -86,19 +86,24 @@
             </div>
         </section>  
         <section class="h-screen" id="products">
-            <div class="bg-purple-950/75 backdrop-blur rounded-md px-4 py-2 w-fit mx-auto" data-aos="fade-up">
-                <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 bg-clip-text text-transparent font-semibold text-6xl tracking-wide w-fit mb-5">
+            <div class="bg-purple-950/75 backdrop-blur rounded-md px-4 py-2 w-fit mx-auto mb-5" data-aos="fade-up">
+                <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 bg-clip-text text-transparent font-semibold text-6xl tracking-wide w-fit mb-3">
                     Products
                 </h1>
+                <p class="text-purple-500 w-fit mx-auto text-sm opacity-60">Our best products, just for you.</p>
             </div>
             <div class="bg-black rounded-md w-8/12 p-5 mx-auto grid grid-cols-2 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
                     <div class="bg-purple-800/50 backdrop-blur-md w-9/12 mx-auto rounded-md mb-7 transition hover:scale-105 hover:shadow-xl cursor-pointer product"
                         data-id="{{ $cont->id }}" onclick="openModal()" data-aos="fade-up">
                         <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
-                        <div class="p-3">
-                            <h1 class="text-xl text-purple-500 mb-2">{{ $cont->product->name }}</h1>
-                            <p class="text-sm text-purple-500 opacity-80">{{ $cont->description }}</p>
+                        <div class="px-3 pt-3 pb-10">
+                            <h1 class="text-2xl text-purple-300 mb-2">{{ $cont->product->name }}</h1>
+                            <p class="text-sm text-purple-400 opacity-70 mb-5">{{ $cont->description }}</p>
+                            <button class="bg-gradient-to-bl from-purple-700 to-purple-800 p-3 rounded-md text-white text-sm mx-auto mb-5">
+                                See more
+                            </button>
+                            <div class="h-px w-full bg-purple-300"></div>
                         </div>
                     </div>
                     <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal"
