@@ -8,16 +8,16 @@
 </head>
 
 <div class="bg-black">
-    <div class="flex flex-col gap-1 ml-5 mt-3 w-fit fixed z-40 cursor-pointer"
+    <div class="flex flex-col gap-1 ml-7 mt-3 w-fit fixed z-40 cursor-pointer"
         onclick="openMenu()">
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-1"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-2"></div>
         <div class="h-1 w-6 bg-white transition rounded-sm" id="bar-3"></div>
     </div>
-    <div class="h-full fixed w-7/12 md:w-2/12 bg-slate-800 text-center pt-12 z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
+    <div class="h-full fixed w-7/12 md:w-2/12 text-center z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
         id="sidebar">
-        <div class="h-full w-10/12 bg-slate-900 mx-auto rounded-md">
-            <div class="pl-3 pt-3 mb-4">
+        <div class="h-full w-10/12 bg-gradient-to-l from-[#3B0076] to-[#5E1D89] mx-auto rounded-md">
+            <div class="pl-3 pt-10 mb-4">
                 <p class="text-sm text-white w-fit">Menu</p>
             </div>
             <div class="flex flex-col gap-3 pl-1">
@@ -55,14 +55,14 @@
     </div>
     <div class="">
         <section class="h-screen mb-20 flex flex-col items-center justify-center gap-3">
-                <h1 class="bg-gradient-to-r from-purple-700 via-purple-300 to-white w-7/12 mx-auto text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
+                <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 w-7/12 mx-auto text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
                     {{ $headingText }}
                 </h1>
                 <div class="flex gap-3">
-                    <button class="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
+                    <button class="bg-gradient-to-br from-purple-700 to-purple-800 px-5 py-3 rounded-md text-white font-semibold mx-auto">
                         Products
                     </button>
-                    <button class="bg-gradient-to-bl from-purple-700 via-purple-500 to-purple-400 px-5 py-3 rounded-md text-white font-semibold mx-auto">
+                    <button class="bg-gradient-to-bl from-purple-700 to-purple-800 px-5 py-3 rounded-md text-white font-semibold mx-auto">
                         See more
                     </button>
                 </div>
@@ -72,7 +72,9 @@
                 <div class="bg-[url('/public/assets/person-working.jpg')] bg-cover h-full w-full mx-auto"></div>
                 <div class="w-full absolute top-0 text-base text-center font-semibold bg-gray-500/30 backdrop-blur-sm p-3">
                     <div class="w-full flex items-center justify-center gap-3">
-                        <h1 class="bg-gradient-to-br from-white via-purple-200 to-purple-600 text-transparent bg-clip-text">Trusted by over 100 companies :</h1>
+                        <div class="bg-purple-950 backdrop-blur-sm px-2 py-1 rounded-md">
+                            <h1 class="bg-purple-300 text-transparent bg-clip-text">Trusted by over 100 companies :</h1>
+                        </div>
                         <div class="flex gap-3">
                             <img src="{{ asset('assets/riot-games.png') }}" class="w-10 h-10">
                             <img src="{{ asset('assets/tencent.png') }}" class="w-18 h-10">
@@ -82,19 +84,21 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="h-screen" id="products">    
-            <h1 class="bg-gradient-to-r from-purple-700 via-purple-400 to-purple-300 bg-clip-text text-transparent font-semibold mx-auto text-6xl tracking-wide w-fit mb-5" data-aos="fade-up">
-                Products
-            </h1>
+        </section>  
+        <section class="h-screen" id="products">
+            <div class="bg-purple-950/75 backdrop-blur rounded-md px-4 py-2 w-fit mx-auto" data-aos="fade-up">
+                <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 bg-clip-text text-transparent font-semibold text-6xl tracking-wide w-fit mb-5">
+                    Products
+                </h1>
+            </div>
             <div class="bg-black rounded-md w-8/12 p-5 mx-auto grid grid-cols-2 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
-                    <div class="bg-gradient-to-t from-purple-950 via-purple-950 to-purple-900 w-9/12 mx-auto rounded-md mb-7 transition hover:scale-105 hover:shadow-xl cursor-pointer product"
+                    <div class="bg-purple-800/50 backdrop-blur-md w-9/12 mx-auto rounded-md mb-7 transition hover:scale-105 hover:shadow-xl cursor-pointer product"
                         data-id="{{ $cont->id }}" onclick="openModal()" data-aos="fade-up">
                         <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
                         <div class="p-3">
-                            <h1 class="text-xl mb-2">{{ $cont->product->name }}</h1>
-                            <p class="text-sm text-slate-300">{{ $cont->description }}</p>
+                            <h1 class="text-xl text-purple-500 mb-2">{{ $cont->product->name }}</h1>
+                            <p class="text-sm text-purple-500 opacity-80">{{ $cont->description }}</p>
                         </div>
                     </div>
                     <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal"
