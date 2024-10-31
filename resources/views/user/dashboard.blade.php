@@ -90,7 +90,7 @@
                 <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 bg-clip-text text-transparent font-semibold text-6xl tracking-wide w-fit mb-3">
                     Products
                 </h1>
-                <p class="text-purple-500 w-fit mx-auto text-sm opacity-60">Our best products, just for you.</p>
+                <p class="text-purple-500 w-fit mx-auto text-sm opacity-60">Our best products just for you.</p>
             </div>
             <div class="bg-black rounded-md w-8/12 p-5 mx-auto grid grid-cols-2 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
