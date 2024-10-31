@@ -16,9 +16,9 @@
     </div>
     <div class="h-full fixed w-7/12 md:w-2/12 text-center z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
         id="sidebar">
-        <div class="h-full w-10/12 bg-gradient-to-l from-[#3B0076] to-[#5E1D89] mx-auto rounded-md">
+        <div class="h-full w-10/12 bg-purple-950 mx-auto rounded-md">
             <div class="pl-3 pt-10 mb-4">
-                <p class="text-sm text-white w-fit">Menu</p>
+                <p class="text-sm text-purple-300 w-fit">Menu</p>
             </div>
             <div class="flex flex-col gap-3 pl-1">
                 <a href="{{ route('dashboard.user') }}">
