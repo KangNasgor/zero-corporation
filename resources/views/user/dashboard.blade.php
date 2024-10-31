@@ -107,11 +107,11 @@
                     </div>
                     <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal"
                         id="modal-{{ $cont->id }}">
-                        <div class="bg-slate-600 w-6/12 p-5 rounded-md">
+                        <div class="bg-purple-950 w-6/12 p-5 rounded-md">
                             <div class="flex items-center mb-5">
                                 <div class="flex flex-col gap-px cursor-pointer p-1 close-modal" data-id="{{ $cont->id }}">
-                                    <div class="bg-slate-800 h-1 w-6 -rotate-45 translate-y-[2.8px]"></div>
-                                    <div class="bg-slate-800 h-1 w-6 rotate-45 -translate-y-[2.8px]"></div>
+                                    <div class="bg-purple-300 h-1 w-6 -rotate-45 translate-y-[2.8px]"></div>
+                                    <div class="bg-purple-300 h-1 w-6 rotate-45 -translate-y-[2.8px]"></div>
                                 </div>
                             </div>
                             <div class="w-full flex items-center gap-5">
@@ -119,10 +119,10 @@
                                     <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
                                 </div>
                                 <div class="w-6/12">
-                                    <h1 class="text-2xl font-semibold mb-5">{{ $cont->product->name }}</h1>
-                                    <p class="mb-5">{{ $cont->modal_description }}</p>
+                                    <h1 class="text-3xl text-purple-300 font-semibold mb-5">{{ $cont->product->name }}</h1>
+                                    <p class="mb-5 text-purple-500">{{ $cont->modal_description }}</p>
                                     <a href="{{ 'https://wa.me/6288232841353/?text=Hello!+I+want+to+buy+' . $cont->product->name }}" target="_blank">
-                                        <button class="text-white bg-slate-800 py-2 px-3 rounded-md">
+                                        <button class="text-purple-950 font-semibold bg-purple-300 py-2 px-3 rounded-md">
                                             Buy
                                         </button>
                                     </a>
