@@ -94,7 +94,7 @@
             </div>
             <div class="bg-black rounded-md w-8/12 p-5 mx-auto grid grid-cols-2 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
-                    <div class="bg-purple-800/50 backdrop-blur-md w-9/12 mx-auto rounded-md mb-7 transition hover:scale-150 hover:shadow-xl" data-aos="fade-up">
+                    <div class="bg-purple-800/50 backdrop-blur-md w-9/12 mx-auto rounded-md mb-7 transform transition hover:scale-105 hover:shadow-xl">
                         <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
                         <div class="px-3 pt-3 pb-10">
                             <h1 class="text-2xl text-purple-300 mb-2">{{ $cont->product->name }}</h1>
