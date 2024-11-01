@@ -8,15 +8,15 @@
             <p>Back</p>
         </div>
     </a>
-    <div class="bg-gradient-to-r from-purple-950 to-purple-500 w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
-        <div class="bg-purple-800 w-72 p-5 h-fit mx-auto rounded-md">
+    <div class="bg-gradient-to-r from-[#4B0082] to-[#8A2BE2] w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
+        <div class="bg-purple-600 w-72 p-5 h-fit mx-auto rounded-md">
             <h1 class="text-white text-xl text-center mb-3">User Data</h1>
             <div class="flex flex-col gap-1" id="data">
                 <p class="text-white">Nama : {{ Auth::user()->name }}</p>
                 <p class="text-white">Email : {{ Auth::user()->email }}</p>
                 <i class="fa-solid fa-pen-to-square text-white cursor-pointer w-fit" id="edit-data" onclick="openEditMode()"></i>
-                <a href="{{ route('password.request') }}">
-                    <button type="button" class="w-1/2 bg-slate-800 mt-2 rounded-md p-1 text-white text-sm">Change password</button>
+                <a href="{{ route('password.request') }}" class="inline-block">
+                    <button type="button" class="w-1/2 bg-[#FFD700] mt-2 rounded-md p-1 text-black text-sm">Change password</button>
                 </a>
             </div>
             <form class="hidden grid-cols-2 gap-1" id="input-data" action="{{ route('profile.update', Auth::user()->id) }}" method="POST">
