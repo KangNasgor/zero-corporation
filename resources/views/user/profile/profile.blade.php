@@ -1,15 +1,15 @@
 @extends('user/user-layout')
 @section('user-layout')
 <title>Profile</title>
-<div class="bg-slate-900">
+<div class="bg-black h-screen">
     <a href="{{ route('dashboard.user') }}">
-        <div class="flex items-center text-white gap-2 ml-2 mt-2">
+        <div class="flex items-center text-purple-500 gap-2 ml-2">
             <i class="fa-solid fa-arrow-left"></i>
             <p>Back</p>
         </div>
     </a>
-    <div class="bg-slate-800 w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
-        <div class="bg-slate-700 w-72 p-5 mx-auto rounded-md">
+    <div class="bg-gradient-to-r from-purple-950 to-purple-500 w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
+        <div class="bg-purple-800 w-72 p-5 h-fit mx-auto rounded-md">
             <h1 class="text-white text-xl text-center mb-3">User Data</h1>
             <div class="flex flex-col gap-1" id="data">
                 <p class="text-white">Nama : {{ Auth::user()->name }}</p>

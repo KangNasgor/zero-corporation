@@ -38,6 +38,7 @@
                     </div>
                 </a>
             </div>
+            <div class="h-px w-11/12 mx-auto bg-purple-300 mt-4"></div>
             <div class="pl-3 pt-3 mb-4">
                 <p class="text-sm text-purple-300 w-fit">Account</p>
             </div>
