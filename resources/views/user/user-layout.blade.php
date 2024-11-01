@@ -22,7 +22,11 @@
 </head>
 <body>
     @yield('user-layout')
-    <div class="h-screen"></div>
+    <div class="h-[50vh] bg-black relative">
+        <div class="h-3/4 bg-gradient-to-b from-purple-950 to-purple-950/55 w-11/12 left-0 right-0 m-auto rounded-md absolute bottom-5">
+
+        </div>
+    </div>
 </body>
 </html>
 <script>
