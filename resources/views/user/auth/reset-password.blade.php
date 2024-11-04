@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-black flex justify-center items-center h-screen">
-    <form action="{{ route('password.update') }}" method="POST" class="bg-gradient-to-br from-purple-900 to-purple-800 p-10 rounded-md flex flex-col w-3/12">
+    <form action="{{ route('password.update') }}" method="POST" class="bg-gradient-to-br from-purple-900 to-purple-800 p-10 rounded-md flex flex-col w-10/12 sm:w-3/12">
         @csrf
         @method('POST')
         <input type="hidden" name="token" value="{{ $token }}">
