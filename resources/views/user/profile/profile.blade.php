@@ -18,13 +18,12 @@
                 <p>Back</p>
             </div>
         </a>
-        <div
-            class="bg-gradient-to-r from-[#4B0082] to-[#8A2BE2] w-10/12 grid grid-cols-2 gap-5 mt-10 p-10 mx-auto rounded-md">
-            <div class="bg-purple-600 w-72 p-5 h-fit mx-auto rounded-md">
-                <h1 class="text-white text-xl text-center mb-3">User Data</h1>
-                <div class="flex flex-col gap-1" id="data">
-                    <p class="text-white">Nama : {{ Auth::user()->name }}</p>
-                    <p class="text-white">Email : {{ Auth::user()->email }}</p>
+        <div class="bg-gradient-to-r from-[#4B0082] to-[#8A2BE2] w-10/12 gap-5 mt-10 p-3 sm:p-10 mx-auto rounded-md">
+            <div class="bg-purple-600 w-10/12 sm:w-72 p-2 sm:p-5 h-fit mx-auto rounded-md">
+                <h1 class="text-white text-xl mx-auto mb-3 w-fit">User Data</h1>
+                <div class="flex flex-col gap-1 w-fit" id="data">
+                    <p class="text-white w-fit">Nama : {{ Auth::user()->name }}</p>
+                    <p class="text-white w-fit">Email : {{ Auth::user()->email }}</p>
                     <i class="fa-solid fa-pen-to-square text-white cursor-pointer w-fit" id="edit-data"
                         onclick="openEditMode()"></i>
                     <a href="{{ route('password.request') }}" class="w-fit">

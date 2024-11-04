@@ -14,7 +14,7 @@
         <div class="h-1 w-6 bg-purple-500 transition rounded-sm" id="bar-2"></div>
         <div class="h-1 w-6 bg-purple-500 transition rounded-sm" id="bar-3"></div>
     </div>
-    <div class="h-full fixed w-4/12 md:w-2/12 text-center z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
+    <div class="h-full fixed w-7/12 md:w-2/12 text-center z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
         id="sidebar">
         <div class="h-full w-10/12 bg-purple-950 mx-auto rounded-md">
             <div class="pl-3 pt-10 mb-4">
