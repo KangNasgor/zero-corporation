@@ -23,6 +23,52 @@
 </head>
 
 <body class="bg-black">
+    <div class="flex flex-col gap-1 ml-7 mt-3 w-fit fixed z-40 cursor-pointer"
+        onclick="openMenu()">
+        <div class="h-1 w-6 bg-purple-500 transition rounded-sm" id="bar-1"></div>
+        <div class="h-1 w-6 bg-purple-500 transition rounded-sm" id="bar-2"></div>
+        <div class="h-1 w-6 bg-purple-500 transition rounded-sm" id="bar-3"></div>
+    </div>
+    <div class="h-full fixed w-7/12 md:w-2/12 text-center z-30 overflow-x-hidden -translate-x-full transition overflow-hidden"
+        id="sidebar">
+        <div class="h-full w-10/12 bg-purple-950 mx-auto rounded-md">
+            <div class="pl-3 pt-10 mb-4">
+                <p class="text-sm text-purple-300 w-fit">Menu</p>
+            </div>
+            <div class="flex flex-col gap-3 pl-1">
+                <a href="{{ route('dashboard.user') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-table-columns text-white"></i>
+                            <p class="text-white w-fit">Dashboard</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#products">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-bag-shopping text-white"></i>
+                            <p class="text-white w-fit">Products</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="h-px w-11/12 mx-auto bg-purple-300 mt-4"></div>
+            <div class="pl-3 pt-3 mb-4">
+                <p class="text-sm text-purple-300 w-fit">Account</p>
+            </div>
+            <div class="flex flex-col gap-3 pl-1">
+                <a href="{{ route('profile.user') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-user text-white"></i>
+                            <p class="text-white w-fit">Profile</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     @yield('user-layout')
     <div class="h-fit mt-10 mb-3 relative z-50">
         <div class="flex flex-col sm:flex-row gap-5 h-fit sm:h-3/4 bg-gradient-to-b from-purple-950 to-purple-950/55 w-11/12 mx-auto rounded-md px-3 py-5 lg:px-10">
@@ -101,4 +147,26 @@
 </html>
 <script>
     AOS.init();
+    let opened = false;
+    const sidebar = document.getElementById('sidebar');
+    const bar1 = document.getElementById("bar-1");
+    const bar2 = document.getElementById("bar-2");
+    const bar3 = document.getElementById("bar-3");
+    function openMenu() {
+        if (opened == false) {
+            bar1.style.transform = "translate(0, 8px) rotate(-45deg)";
+            bar2.style.opacity = "0";
+            bar3.style.transform = "translate(0, -8px) rotate(45deg)";
+            opened = true;
+            sidebar.classList.add('translate-x-0');
+            sidebar.classList.remove('-translate-x-full');
+        } else if (opened == true) {
+            bar1.style.transform = "translate(0, 0) rotate(0)";
+            bar2.style.opacity = "100";
+            bar3.style.transform = "translate(0, 0) rotate(0)";
+            opened = false;
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+        }
+    }
 </script>
