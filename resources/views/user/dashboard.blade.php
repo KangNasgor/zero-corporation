@@ -60,9 +60,11 @@
                     {{ $headingText }}
                 </h1>
                 <div class="flex gap-3">
-                    <button class="bg-gradient-to-br from-purple-700 to-purple-800 px-5 py-3 rounded-md text-white font-semibold mx-auto">
-                        Products
-                    </button>
+                    <a href="#products">
+                        <button class="bg-gradient-to-br from-purple-700 to-purple-800 px-5 py-3 rounded-md text-white font-semibold mx-auto">
+                            Products
+                        </button>
+                    </a>
                     <button class="bg-gradient-to-bl from-purple-700 to-purple-800 px-5 py-3 rounded-md text-white font-semibold mx-auto">
                         See more
                     </button>

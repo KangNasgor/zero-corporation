@@ -46,15 +46,14 @@
                 <div class="lg:mr-8 h-fit w-fit">
                     <h1 class="text-purple-200 font-semibold mb-2 w-fit">Contacts</h1>
                     <div class="flex flex-col gap-1 w-fit">
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Instagram
-                        </p>
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Facebook</p>
+                        <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="https://www.instagram.com/aester.bluu/" target="_blank">Instagram</a>
+                        <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="https://www.facebook.com/leonard.alfareno.9" target="_blank">Facebook</a>
                     </div>
                 </div>
                 <div class="lg:mr-8 h-fit w-fit">
                     <h1 class="text-purple-200 font-semibold mb-2 w-fit">Company</h1>
                     <div class="flex flex-col gap-1 w-fit">
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">About</p>
+                        <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="{{ route('about.user') }}">About</a>
                         <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Blog</p>
                     </div>
                 </div>

@@ -15,6 +15,7 @@ use App\Http\Controllers\User\AuthUserController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\User\LoginUserController;
+use App\Http\Controllers\User\AboutController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
@@ -92,11 +93,13 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
 
 // User register below
 Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class])->group(function(){
-        // User verification
+    // User verification
     Route::get('email/verify', [AuthUserController::class, 'verificationNotice'])->withoutMiddleware(UserVerificationMiddleware::class)->name('verification.notice');
     Route::get('email/verify/{id}/{hash}', [AuthUserController::class, 'verify'])->withoutMiddleware(UserVerificationMiddleware::class)->name('verification.verify');
     Route::post('email/resend', [AuthUserController::class, 'resend'])->name('verification.resend');
+    // User pages
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
+    Route::get('/about', [AboutController::class, 'aboutView'])->name('about.user');
     // User logout
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
     // User Profile
