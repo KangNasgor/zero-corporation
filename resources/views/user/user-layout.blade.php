@@ -24,7 +24,7 @@
 
 <body class="bg-black">
     @yield('user-layout')
-    <div class="h-fit sm:h-[60vh] relative z-50">
+    <div class="h-fit mt-10 mb-3 relative z-50">
         <div class="flex flex-col sm:flex-row gap-5 h-fit sm:h-3/4 bg-gradient-to-b from-purple-950 to-purple-950/55 w-11/12 mx-auto rounded-md px-3 py-5 lg:px-10">
             <div class="w-full sm:w-3/12">
                 <h1 class="text-lg text-purple-200 font-semibold">ZERO corp</h1>

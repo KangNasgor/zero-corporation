@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-black flex justify-center items-center h-screen">
-    <form action="{{ route('password.email') }}" method="POST" class="bg-gradient-to-br from-purple-900 to-purple-800 p-10 rounded-md flex flex-col w-3/12">
+    <form action="{{ route('password.email') }}" method="POST" class="bg-gradient-to-br from-purple-900 to-purple-800 p-10 rounded-md flex flex-col w-10/12 sm:w-3/12">
         @csrf
         @method('POST')
         <h1 class="text-white mb-3">Please type your email so we can send you password reset link</h1>
