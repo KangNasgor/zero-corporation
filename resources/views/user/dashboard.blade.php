@@ -93,7 +93,7 @@
                 </h1>
                 <p class="text-purple-500 w-fit mx-auto text-sm opacity-60">Our best products, just for you.</p>
             </div>
-            <div class="bg-black rounded-md w-full p-5 mx-auto grid grid-cols-1 sm:grid-cols-2 text-white" data-aos="fade-up">
+            <div class="bg-black rounded-md w-full sm:w-8/12 p-5 mx-auto grid grid-cols-1 sm:grid-cols-2 text-white" data-aos="fade-up">
                 @foreach ($content as $cont)
                     <div class="bg-purple-800/50 backdrop-blur-md w-10/12 mx-auto rounded-md mb-7" id="product-{{ $cont->product_id }}">
                         <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
@@ -106,27 +106,29 @@
                             <div class="h-px w-full bg-purple-300"></div>
                         </div>
                     </div>
-                    <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 modal"
+                    <div class="bg-black/75 w-full h-full hidden justify-center items-center fixed left-1/2 top-1/2 p-3 sm:p-0 transform -translate-x-1/2 -translate-y-1/2 z-50 modal"
                         id="modal-{{ $cont->id }}">
-                        <div class="bg-purple-950 w-6/12 p-5 rounded-md">
+                        <div class="bg-purple-950 sm:w-6/12 p-3 sm:p-5 rounded-md">
                             <div class="flex items-center mb-5">
                                 <div class="flex flex-col gap-px cursor-pointer p-1 close-modal" data-id="{{ $cont->id }}">
                                     <div class="bg-purple-300 h-1 w-6 -rotate-45 translate-y-[2.8px]"></div>
                                     <div class="bg-purple-300 h-1 w-6 rotate-45 -translate-y-[2.8px]"></div>
                                 </div>
                             </div>
-                            <div class="w-full flex items-center gap-5">
-                                <div class="w-6/12">
+                            <div class="w-full flex flex-col sm:flex-row items-center gap-5">
+                                <div class="w-10/12 sm:w-6/12">
                                     <img src="{{ asset('storage/' . $cont->image) }}" alt="{{ $cont->product->name }}">
                                 </div>
-                                <div class="w-6/12">
+                                <div class="sm:w-6/12">
                                     <h1 class="text-3xl text-purple-300 font-semibold mb-5">{{ $cont->product->name }}</h1>
                                     <p class="mb-5 text-purple-500">{{ $cont->modal_description }}</p>
-                                    <a href="{{ 'https://wa.me/6288232841353/?text=Hello!+I+want+to+buy+' . $cont->product->name }}" target="_blank">
-                                        <button class="text-purple-950 font-semibold bg-purple-300 py-2 px-3 rounded-md">
-                                            Buy
-                                        </button>
-                                    </a>
+                                    <div class="w-fit mx-auto sm:mx-0">
+                                        <a href="{{ 'https://wa.me/6288232841353/?text=Hello!+I+want+to+buy+' . $cont->product->name }}" target="_blank">
+                                            <button class="text-purple-950 font-semibold bg-purple-300 py-2 px-7 sm:px-3 rounded-md">
+                                                Buy
+                                            </button>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
