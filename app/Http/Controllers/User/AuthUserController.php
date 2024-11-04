@@ -55,14 +55,14 @@ class AuthUserController extends Controller
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8|confirmed',
-        ]); // validate 
-     
+        ]); // validate
+        
         $status = Password::reset( // reset is Password's static method, it accepts two params, creds array and closure (anon function) that defines how to handle user reset password
             $request->only('email', 'password', 'password_confirmation', 'token'), // retrieving request
             function (User $user, string $password) { // executes when password reset is successful 
                 $user->forceFill([
                     'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
+                ])->setRememberToken(Str::random(64));
                 $user->save();
                 event(new PasswordReset($user)); // listening to $user
             }
