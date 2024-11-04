@@ -29,8 +29,8 @@
             class="flex gap-5 h-3/4 bg-gradient-to-b from-purple-950 to-purple-950/55 w-11/12 left-0 right-0 m-auto rounded-md absolute bottom-5 md:px-5 lg:px-10 py-5">
             <div class="w-3/12">
                 <h1 class="text-lg text-purple-200 font-semibold">ZERO corp</h1>
-                <p class="text-sm text-purple-300/80">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                    pariatur omnis, veritatis suscipit dicta ipsam voluptate rerum eligendi libero repellat.</p>
+                <p class="text-sm text-purple-300/80">ZERO Corp delivers innovative tech solutions, from AI and custom
+                    software to professional websites, to help businesses thrive in a digital world.</p>
             </div>
             <div class="grid grid-rows-2 grid-flow-col">
                 <div class="mr-8">
@@ -59,8 +59,10 @@
                 <div class="mr-8">
                     <h1 class="text-purple-200 font-semibold mb-2">Job</h1>
                     <div class="flex flex-col gap-1">
-                        <p class="text-sm text-purple-300/70 cursor-pointer hover:text-purple-400/70">Front-end developer</p>
-                        <p class="text-sm text-purple-300/70 cursor-pointer hover:text-purple-400/70">Back-end developer</p>
+                        <p class="text-sm text-purple-300/70 cursor-pointer hover:text-purple-400/70">Front-end
+                            developer</p>
+                        <p class="text-sm text-purple-300/70 cursor-pointer hover:text-purple-400/70">Back-end developer
+                        </p>
                         <p class="text-sm text-purple-300/70 cursor-pointer hover:text-purple-400/70">UI/UX</p>
                     </div>
                 </div>
@@ -74,11 +76,11 @@
                 </div>
             </div>
             <div>
-                <h1 class="text-white font-semibold text-xl mb-3">See us at</h1>
+                <h1 class="text-white font-semibold text-xl mb-3">Find us here</h1>
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63466.57881546266!2d107.29084404999999!3d-6.176093349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e697fdf0cdd47ef%3A0x401576d14fed990!2sRengasdengklok%2C%20Karawang%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1730445768083!5m2!1sen!2sid"
-                    width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade" class=" float-end"></iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d253866.3154296647!2d107.290844!3d-6.176093!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e697fdf0cdd47ef%3A0x401576d14fed990!2sRengasdengklok%2C%20Karawang%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1730686109680!5m2!1sen!2sid"
+                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
