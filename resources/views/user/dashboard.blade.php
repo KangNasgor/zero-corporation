@@ -56,7 +56,7 @@
     </div>
     <div class="">
         <section class="h-screen mb-20 flex flex-col items-center justify-center gap-10">
-                <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 w-9/12 sm:w-7/12 mx-auto text-5xl sm:text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
+                <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 w-full sm:w-7/12 mx-auto text-5xl sm:text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
                     {{ $headingText }}
                 </h1>
                 <div class="flex gap-3">
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </section>  
-        <section class="h-screen" id="products">
+        <section class="h-fit" id="products">
             <div class="bg-purple-950/75 backdrop-blur rounded-md px-4 py-2 w-fit mx-auto mb-5" data-aos="fade-up">
                 <h1 class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 bg-clip-text text-transparent font-semibold text-6xl tracking-wide w-fit mb-3">
                     Products
@@ -136,7 +136,6 @@
                 @endforeach
             </div>
         </section>
-        <section class="h-screen w-full"></section>
     </div>
 </div>
 <script>
