@@ -49,17 +49,17 @@
                 </div>
             </section>
             <section class="h-fit pt-36 mb-36 w-10/12 mx-auto" id="about">
-                <h1 class="bg-purple-950/75 pb-4 pt-1 px-2 mb-14 text-purple-500 text-6xl font-semibold w-fit rounded-md"
+                <h1 class="bg-purple-950/75 pb-4 pt-1 px-2 mb-14 text-purple-500 text-4xl mx-auto md:mx-0 md:text-6xl font-semibold w-fit rounded-md"
                     data-aos="fade-up">About our company</h1>
-                <div class="flex">
-                    <div class="text-white pt-10 pl-5" data-aos="fade-up">
-                        <p class="w-10/12">
+                <div class="flex flex-col-reverse md:flex-row">
+                    <div class="text-white pt-10 pl-2 md:pl-5" data-aos="fade-up">
+                        <p class="w-full md:w-10/12">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eaque molestias quos minus
                             reiciendis est qui minima sed fugiat sapiente, amet modi blanditiis incidunt quis voluptatem
                             perferendis perspiciatis ut. Quisquam?
                         </p>
                     </div>
-                    <img src="{{ asset('assets/person-corridor.jpg') }}" class="w-6/12" data-aos="fade-up">
+                    <img src="{{ asset('assets/person-corridor.jpg') }}" class="w-full md:w-6/12" data-aos="fade-up">
                 </div>
             </section>
             <section class="h-fit mb-36" id="products">
