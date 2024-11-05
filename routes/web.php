@@ -88,6 +88,18 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
         Route::put('/dashboardcontent/restore/{id}', 'restore')->name('dashboardcontent.restore');
         Route::delete('/dashboardcontent/delete/{id}', 'delete')->name('dashboardcontent.delete');
     });
+    Route::controller(AboutController::class)->group(function(){
+        Route::get('/aboutcontent', 'about')->name('aboutcontent');
+        Route::get('/aboutcontent/search', 'search')->name('aboutcontent.search');
+        Route::get('/aboutcontent/create', 'createView')->name('aboutcontent.create');
+        Route::post('/aboutcontent/create/store', 'create')->name('aboutcontent.store');
+        Route::get('/aboutcontent/edit/{id}', 'updateView')->name('aboutcontent.editpage');
+        Route::put('/aboutcontent/edit/update/{id}', 'update')->name('aboutcontent.edit');
+        Route::get('/aboutcontent/history', 'history')->name('aboutcontent.history');
+        Route::put('/aboutcontent/softdel/{id}', 'softdelete')->name('aboutcontent.softdelete');
+        Route::put('/aboutcontent/restore/{id}', 'restore')->name('aboutcontent.restore');
+        Route::delete('/aboutcontent/delete/{id}', 'delete')->name('aboutcontent.delete');
+    });
     
 });
 

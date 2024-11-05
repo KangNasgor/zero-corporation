@@ -3,7 +3,7 @@
     <div class="bg-black h-screen flex justify-center items-center mb-10 pt-10">
         <div class="w-fit h-fit flex flex-col items-center">
             <div class="p-3 rounded-md md:bg-purple-950/75 w-fit mx-auto mb-14">
-                <h1 class="text-center text-purple-500 font-semibold text-4xl md:text-6xl w-fit mb-3">About our company</h1>
+                <h1 class="text-center text-purple-500 font-semibold text-4xl md:text-6xl w-fit mb-3">{{ $headingText }}</h1>
                 <p class="text-md md:text-lg text-purple-600 font-medium w-fit mx-auto opacity-65">To understand us more.</p>
             </div>
             <a class="w-fit" href="#content">
