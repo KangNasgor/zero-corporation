@@ -1,13 +1,18 @@
 @extends('user/user-layout')
 @section('user-layout')
     <div class="bg-black h-screen flex justify-center items-center mb-10 pt-10">
-        <div class="p-3 rounded-md bg-purple-950/75 w-fit mx-auto mb-14">
-            <h1 class="text-center text-purple-500 font-semibold text-6xl w-fit mb-3">About our company</h1>
-            <p class="text-lg text-purple-600 font-medium w-fit mx-auto opacity-65">Lorem ipsum</p>
+        <div class="w-fit h-fit flex flex-col items-center">
+            <div class="p-3 rounded-md bg-purple-950/75 w-fit mx-auto mb-14">
+                <h1 class="text-center text-purple-500 font-semibold text-6xl w-fit mb-3">About our company</h1>
+                <p class="text-lg text-purple-600 font-medium w-fit mx-auto opacity-65">To understand us more.</p>
+            </div>
+            <a class="w-fit" href="#content">
+                <button class="bg-purple-900 p-3 rounded-md text-purple-300 font-medium tracking-wide">Get started</button>
+            </a>
         </div>
     </div>
-    <div class="h-screen">
-        <div class="flex gap-10 w-10/12 mx-auto justify-center mb-36">
+    <div class="h-screen" id="content">
+        <div class="flex gap-10 w-10/12 mx-auto justify-center pt-36 mb-36">
             <div class="bg-[url('/public/assets/person-working.jpg')] w-5/12 bg-cover" data-aos="fade-up"></div>
             <div class="w-6/12">
                 <h1 class="text-white font-semibold text-5xl mb-10 leading-tight" data-aos="fade-up">How we started this
@@ -26,7 +31,7 @@
         </div>
     </div>
     <div class="h-screen">
-        <div class="flex gap-3 w-10/12 mx-auto justify-center">
+        <div class="flex gap-3 w-10/12 mx-auto justify-center pt-36 mb-36">
             <div class="w-5/12">
                 <h1 class="text-white font-semibold text-5xl mb-10" data-aos="fade-up">Our <span
                         class="bg-purple-950/75 text-purple-500 px-2 pb-3 rounded-md">goals</span></h1>
@@ -38,7 +43,7 @@
             <div class="bg-[url('/public/assets/person-working.jpg')] w-6/12 bg-cover" data-aos="fade-up"></div>
         </div>
     </div>
-    <div class="h-screen">
+    <div class="h-screen pt-36 mb-36">
         <h1 class="text-white font-semibold text-5xl mb-10 mx-auto w-fit" data-aos="fade-up">Our great<span
                 class="bg-purple-950/75 text-purple-500 px-2 pb-3 rounded-md ml-1">members</span></h1>
         <div class="w-10/12 mx-auto flex gap-5 justify-center mb-10">
