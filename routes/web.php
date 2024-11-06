@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Middleware\UserVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+// Controllers
+use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Controllers\Admin\Admin\AdminController;
 use App\Http\Controllers\Admin\Employee\EmployeeController;
 use App\Http\Controllers\Admin\Products\ProductsController;
@@ -17,6 +19,9 @@ use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\About_imgController;
+use App\Http\Controllers\User\BlogController;
+
+// Middlewares
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
@@ -125,6 +130,7 @@ Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class]
     // User pages
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
     Route::get('/about', [AboutController::class, 'aboutView'])->name('about.user');
+    Route::get('/blogs', [BlogController::class, 'blog'])->name('blog.user');
     // User logout
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
     // User Profile

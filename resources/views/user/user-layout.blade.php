@@ -60,6 +60,14 @@
                         </div>
                     </div>
                 </a>
+                <a href="{{ route('blog.user') }}">
+                    <div class="flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-newspaper text-white"></i>
+                            <p class="text-white w-fit">Blogs</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="h-px w-11/12 mx-auto bg-purple-300 mt-4"></div>
             <div class="pl-3 pt-3 mb-4">
@@ -78,7 +86,7 @@
         </div>
     </div>
     @yield('user-layout')
-    <div class="h-fit mt-10 mb-3 relative z-50">
+    <div class="h-fit mt-10 mb-3 relative">
         <div class="flex flex-col sm:flex-row gap-5 h-fit sm:h-3/4 bg-gradient-to-b from-purple-950 to-purple-950/55 w-11/12 mx-auto rounded-md px-3 py-5 lg:px-10">
             <div class="w-full sm:w-3/12">
                 <h1 class="text-lg text-purple-200 font-semibold">ZERO corp</h1>
@@ -102,13 +110,14 @@
                     <div class="flex flex-col gap-1 w-fit">
                         <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="https://www.instagram.com/aester.bluu/" target="_blank">Instagram</a>
                         <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="https://www.facebook.com/leonard.alfareno.9" target="_blank">Facebook</a>
+                        <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="https://www.youtube.com/@AesterbluuXZ" target="_blank">Youtube</a>
                     </div>
                 </div>
                 <div class="lg:mr-8 h-fit w-fit">
                     <h1 class="text-purple-200 font-semibold mb-2 w-fit">Company</h1>
                     <div class="flex flex-col gap-1 w-fit">
                         <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="{{ route('about.user') }}">About</a>
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Blog</p>
+                        <a class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70" href="{{ route('blog.user') }}">Blog</a>
                     </div>
                 </div>
                 <div class="lg:mr-8 h-fit w-fit">

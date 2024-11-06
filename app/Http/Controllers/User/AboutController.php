@@ -15,11 +15,17 @@ class AboutController extends Controller
         $contents = About_contents::whereIn('name', [
             'headingText',
             'headingSubText',
+            'howWeStarted1',
+            'howWeStarted2',
+            'ourGoals',
         ])->pluck('value', 'name');
         $members = About_img::where('status', 'active')->get();
         return view('user.about', [
             'headingText' => $contents['headingText'] ?? null,
             'headingSubText' => $contents['headingSubText'] ?? null,
+            'howWeStarted1' => $contents['howWeStarted1'] ?? null,
+            'howWeStarted2' => $contents['howWeStarted2'] ?? null,
+            'ourGoals' => $contents['ourGoals'] ?? null,
         ], compact('members'));
     }
     public function about(Request $req){

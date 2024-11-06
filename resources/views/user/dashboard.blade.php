@@ -9,7 +9,7 @@
         <div class="">
             <section class="h-screen mb-20 flex flex-col items-center justify-center gap-10">
                 <h1
-                    class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 w-full sm:w-7/12 mx-auto text-5xl sm:text-6xl text-center font-semibold text-transparent bg-clip-text leading-snug">
+                    class="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 w-full sm:w-7/12 mx-auto text-5xl/snug sm:text-6xl/snug text-center font-semibold text-transparent bg-clip-text">
                     {{ $headingText }}
                 </h1>
                 <div class="flex gap-3">
@@ -52,7 +52,7 @@
                 <h1 class="bg-purple-950/75 pb-4 pt-1 px-2 mb-14 text-purple-500 text-4xl mx-auto md:mx-0 md:text-6xl font-semibold w-fit rounded-md"
                     data-aos="fade-up">About our company</h1>
                 <div class="flex flex-col-reverse md:flex-row">
-                    <div class="text-white pt-10 pl-2 md:pl-5" data-aos="fade-up">
+                    <div class="text-white flex items-center pl-2 md:pl-5" data-aos="fade-up">
                         <p class="w-full md:w-10/12">
                             At ZERO Corp, we’re dedicated to empowering people and businesses to harness the full potential
                             of technology with ease. Specializing in innovative tech solutions like custom websites,
