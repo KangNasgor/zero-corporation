@@ -13,7 +13,7 @@ class About_imgController extends Controller
         $search = $req->input('search');
         if($search){
             $contents = About_img::where('name', 'like', '%' . $search . '%')
-            ->orWhere('role', 'like', '%' . $search . '%'); 
+            ->orWhere('role', 'like', '%' . $search . '%')->get(); 
         }
         else{
             $contents = About_img::where('status', 'active')->get();
