@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\About_img;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\About_contents;
@@ -15,10 +16,11 @@ class AboutController extends Controller
             'headingText',
             'headingSubText',
         ])->pluck('value', 'name');
+        $members = About_img::where('status', 'active')->get();
         return view('user.about', [
             'headingText' => $contents['headingText'] ?? null,
             'headingSubText' => $contents['headingSubText'] ?? null,
-        ]);
+        ], compact('members'));
     }
     public function about(Request $req){
         $search = $req->input('search');

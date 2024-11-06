@@ -48,7 +48,15 @@
         <h1 class="text-white font-semibold text-3xl md:text-5xl mb-10 mx-auto w-fit" data-aos="fade-up">Our great<span
                 class="bg-purple-950/75 text-purple-500 px-2 pb-3 rounded-md ml-1">members</span></h1>
         <div class="w-10/12 mx-auto grid gap-5 grid-cols-2 md:gap-0 md:grid-cols-4 mb-10">
-            <div class="w-fit flex flex-col items-center mb-6">
+            @foreach ($members as $member)
+                <div class="w-fit flex flex-col items-center mb-6">
+                    <img src="{{ asset('storage/' . $member->image) }}" width="120" height="120" class="rounded-full mb-3"
+                        data-aos="fade-up">
+                    <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">{{ $member->name }}</h1>
+                    <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">{{ $member->role }}</p>
+                </div>
+            @endforeach
+            {{-- <div class="w-fit flex flex-col items-center mb-6">
                 <img src="{{ asset('assets/guts.jpg') }}" width="120" height="120" class="rounded-full mb-3"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Guts</h1>
@@ -83,7 +91,7 @@
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Leonard Alfareno</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">Front-end Developer</p>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
