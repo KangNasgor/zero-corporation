@@ -54,9 +54,11 @@
                 <div class="flex flex-col-reverse md:flex-row">
                     <div class="text-white pt-10 pl-2 md:pl-5" data-aos="fade-up">
                         <p class="w-full md:w-10/12">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eaque molestias quos minus
-                            reiciendis est qui minima sed fugiat sapiente, amet modi blanditiis incidunt quis voluptatem
-                            perferendis perspiciatis ut. Quisquam?
+                            At ZERO Corp, we’re dedicated to empowering people and businesses to harness the full potential
+                            of technology with ease. Specializing in innovative tech solutions like custom websites,
+                            artificial intelligence, antivirus software, and more, we focus on simplifying complex
+                            technologies. Our mission is to make digital tools accessible and straightforward, helping you
+                            thrive in a connected world.
                         </p>
                     </div>
                     <img src="{{ asset('assets/person-corridor.jpg') }}" class="w-full md:w-6/12" data-aos="fade-up">

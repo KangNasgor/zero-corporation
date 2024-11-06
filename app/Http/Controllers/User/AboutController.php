@@ -13,9 +13,11 @@ class AboutController extends Controller
     public function aboutView(): View{
         $contents = About_contents::whereIn('name', [
             'headingText',
+            'headingSubText',
         ])->pluck('value', 'name');
         return view('user.about', [
             'headingText' => $contents['headingText'] ?? null,
+            'headingSubText' => $contents['headingSubText'] ?? null,
         ]);
     }
     public function about(Request $req){

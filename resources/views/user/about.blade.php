@@ -4,7 +4,7 @@
         <div class="w-fit h-fit flex flex-col items-center">
             <div class="p-3 rounded-md md:bg-purple-950/75 w-fit mx-auto mb-14">
                 <h1 class="text-center text-purple-500 font-semibold text-4xl md:text-6xl w-fit mb-3">{{ $headingText }}</h1>
-                <p class="text-md md:text-lg text-purple-600 font-medium w-fit mx-auto opacity-65">To understand us more.</p>
+                <p class="text-md md:text-lg text-purple-600 font-medium w-fit mx-auto opacity-65">{{ $headingSubText }}</p>
             </div>
             <a class="w-fit" href="#content">
                 <button class="bg-purple-900 p-3 rounded-md text-purple-300 font-medium tracking-wide">Get started</button>
@@ -49,37 +49,37 @@
                 class="bg-purple-950/75 text-purple-500 px-2 pb-3 rounded-md ml-1">members</span></h1>
         <div class="w-10/12 mx-auto grid gap-5 grid-cols-2 md:gap-0 md:grid-cols-4 mb-10">
             <div class="w-fit flex flex-col items-center mb-6">
-                <img src="{{ asset('assets/guts.jpg') }}" width="120" height="120" class="rounded-full"
+                <img src="{{ asset('assets/guts.jpg') }}" width="120" height="120" class="rounded-full mb-3"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Guts</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">Project Leader</p>
             </div>
             <div class="w-fit flex flex-col items-center mb-6">
-                <img src="{{ asset('assets/altair.jpg') }}" width="120" height="120" class="rounded-full"
+                <img src="{{ asset('assets/altair.jpg') }}" width="120" height="120" class="rounded-full mb-3"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Altaïr Ibn-LaʼAhad</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">Supervisor</p>
             </div>
             <div class="w-fit flex flex-col items-center mb-6">
-                <img src="{{ asset('assets/aeri.jpg') }}" width="120" height="120" class="rounded-full aspect-square"
+                <img src="{{ asset('assets/aeri.jpg') }}" width="120" height="120" class="rounded-full mb-3 aspect-square"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Uchinaga Aeri</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">Project Manager</p>
             </div>
             <div class="w-fit flex flex-col items-center mb-6">
-                <img src="{{ asset('assets/ningning.jpg') }}" width="120" height="120" class="rounded-full"
+                <img src="{{ asset('assets/ningning.jpg') }}" width="120" height="120" class="rounded-full mb-3"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Ning Yizhuo</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">UI/UX Designer</p>
             </div>
             <div class="w-fit flex flex-col items-center mb-6">
-                <img src="{{ asset('assets/w.jpg') }}" width="120" height="120" class="rounded-full"
+                <img src="{{ asset('assets/w.jpg') }}" width="120" height="120" class="rounded-full mb-3"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Leonard Alfareno</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">Back-end Developer</p>
             </div>
             <div class="w-fit flex flex-col items-center mb-6">
-                <img src="{{ asset('assets/w.jpg') }}" width="120" height="120" class="rounded-full"
+                <img src="{{ asset('assets/w.jpg') }}" width="120" height="120" class="rounded-full mb-3"
                     data-aos="fade-up">
                 <h1 class="text-md md:text-lg text-white w-fit" data-aos="fade-up">Leonard Alfareno</h1>
                 <p class="text-sm md:text-md text-white w-fit" data-aos="fade-up">Front-end Developer</p>

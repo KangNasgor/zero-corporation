@@ -16,6 +16,7 @@ use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\User\About_imgController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
@@ -99,6 +100,18 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
         Route::put('/aboutcontent/softdel/{id}', 'softdelete')->name('aboutcontent.softdelete');
         Route::put('/aboutcontent/restore/{id}', 'restore')->name('aboutcontent.restore');
         Route::delete('/aboutcontent/delete/{id}', 'delete')->name('aboutcontent.delete');
+    });
+    Route::controller(About_imgController::class)->group(function(){
+        Route::get('/aboutimg', 'aboutimgView')->name('about.image');
+        Route::get('/aboutimg/search', 'search')->name('aboutimg.search');
+        Route::get('/aboutimg/create', 'createView')->name('aboutimg.create');
+        Route::post('/aboutimg/create/store', 'create')->name('aboutimg.store');
+        Route::get('/aboutimg/edit/{id}', 'updateView')->name('aboutimg.editpage');
+        Route::put('/aboutimg/edit/update/{id}', 'update')->name('aboutimg.edit');
+        Route::get('/aboutimg/history', 'history')->name('aboutimg.history');
+        Route::put('/aboutimg/softdel/{id}', 'softdelete')->name('aboutimg.softdelete');
+        Route::put('/aboutimg/restore/{id}', 'restore')->name('aboutimg.restore');
+        Route::delete('/aboutimg/delete/{id}', 'delete')->name('aboutimg.delete');
     });
     
 });
