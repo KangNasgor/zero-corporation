@@ -118,6 +118,18 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
         Route::put('/aboutimg/restore/{id}', 'restore')->name('aboutimg.restore');
         Route::delete('/aboutimg/delete/{id}', 'delete')->name('aboutimg.delete');
     });
+    Route::controller(BlogController::class)->group(function(){
+        Route::get('/blog', 'blogView')->name('blog');
+        Route::get('/blog/search', 'search')->name('blog.search');
+        Route::get('/blog/create', 'createView')->name('blog.create');
+        Route::post('/blog/create/store', 'create')->name('blog.store');
+        Route::get('/blog/edit/{id}', 'updateView')->name('blog.editpage');
+        Route::put('/blog/edit/update/{id}', 'update')->name('blog.edit');
+        Route::get('/blog/history', 'history')->name('blog.history');
+        Route::put('/blog/softdel/{id}', 'softdelete')->name('blog.softdelete');
+        Route::put('/blog/restore/{id}', 'restore')->name('blog.restore');
+        Route::delete('/blog/delete/{id}', 'delete')->name('blog.delete');
+    });
     
 });
 
@@ -131,6 +143,12 @@ Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class]
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
     Route::get('/about', [AboutController::class, 'aboutView'])->name('about.user');
     Route::get('/blogs', [BlogController::class, 'blog'])->name('blog.user');
+    // User blogs
+    Route::view('/blog-1', 'user/blogs/blog-1')->name('blog-1');
+    Route::view('/blog-2', 'user/blogs/blog-2')->name('blog-2');
+    Route::view('/blog-3', 'user/blogs/blog-3')->name('blog-3');
+    Route::view('/blog-4', 'user/blogs/blog-4')->name('blog-4');
+    Route::view('/blog-5', 'user/blogs/blog-5')->name('blog-5');
     // User logout
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
     // User Profile

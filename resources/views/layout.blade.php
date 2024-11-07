@@ -23,6 +23,7 @@
         <a class="text-slate-300 w-fit text-lg p-4" href="{{route('dashboardcontent')}}">Dashboard Content</a>
         <a class="text-slate-300 w-fit text-lg p-4" href="{{route('aboutcontent')}}">About Content</a>
         <a class="text-slate-300 w-fit text-lg p-4" href="{{route('about.image')}}">About IMG</a>
+        <a class="text-slate-300 w-fit text-lg p-4" href="{{route('blog')}}">Blogs</a>
         <a class="text-slate-300 w-fit text-lg p-4" href="{{ route('logout') }}">Logout</a>
     </nav>
     <div class="">
