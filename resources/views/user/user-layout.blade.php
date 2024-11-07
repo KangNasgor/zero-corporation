@@ -44,19 +44,19 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dashboard.user') }}#products">
-                    <div class=" flex justify-start w-11/12 mx-auto">
-                        <div class="flex items-center gap-2 text-md">
-                            <i class="fa-solid fa-bag-shopping text-white"></i>
-                            <p class="text-white w-fit">Products</p>
-                        </div>
-                    </div>
-                </a>
                 <a href="{{ route('about.user') }}">
                     <div class="flex justify-start w-11/12 mx-auto">
                         <div class="flex items-center gap-2 text-md">
                             <i class="fa-solid fa-building text-white"></i>
                             <p class="text-white w-fit">About</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('dashboard.user') }}#products">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-bag-shopping text-white"></i>
+                            <p class="text-white w-fit">Products</p>
                         </div>
                     </div>
                 </a>
@@ -79,6 +79,14 @@
                         <div class="flex items-center gap-2 text-md">
                             <i class="fa-solid fa-user text-white"></i>
                             <p class="text-white w-fit">Profile</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('logout.user') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-right-from-bracket text-red-500"></i> 
+                            <p class="text-red-500 w-fit">Log Out</p>
                         </div>
                     </div>
                 </a>

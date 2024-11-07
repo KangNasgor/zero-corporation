@@ -10,9 +10,9 @@
                             Create
                         </button>
                     </a>
-                    <a href="{{ route('blog.history') }}">
+                    <a href="{{ route('blog') }}">
                         <button class="text-white bg-slate-600 py-2 px-3 rounded-md">
-                            History
+                            Home
                         </button>
                     </a>
                 </div>
@@ -48,11 +48,13 @@
                                 </td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-400">{{ $blog->status }}</td>
                                 <td class="border-b border-slate-700 p-4 pl-8 text-slate-200">
-                                    <a href="{{ route('blog.editpage', $blog->id) }}">
-                                        <button class="bg-teal-300 text-black py-2 px-3 rounded-md">
-                                            Edit
+                                    <form action="{{ route('blog.restore', $blog->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="bg-teal-300 text-black py-2 px-3 rounded-md" type="submit">
+                                            Restore
                                         </button>
-                                    </a>
+                                    </form>
                                     <a>
                                         <button class="bg-red-600 py-2 px-3 rounded-md delete-button" data-id="{{ $blog->id }}">
                                             Delete
@@ -69,10 +71,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex gap-2 w-full justify-evenly">
-                                                    <form action="{{ route('blog.softdelete', $blog->id) }}"
+                                                    <form action="{{ route('blog.delete', $blog->id) }}"
                                                         method="POST" class="w-fit bg-red-600 p-2 rounded-md">
                                                         @csrf
-                                                        @method('PUT')
+                                                        @method('DELETE')
                                                         <button type="submit">
                                                             Delete
                                                         </button>

@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\DB;
 class BlogController extends Controller
 {
     public function blog(): View{
-        return view('user.blog');
+        $blogs = Blog::where('status', 'active')->get();
+        return view('user.blog', compact('blogs'));
     }
     public function blogView(Request $req){
         $search = $req->input('search');
@@ -50,49 +51,50 @@ class BlogController extends Controller
         return redirect()->route('blog');
     }
     public function updateView(Request $req, int $id){
-        $content =Blog::where('id', $id)->first();
-        return view('aboutimg.edit', compact('content'));
+        $blogs = Blog::where('id', $id)->first();
+        return view('blogs.edit', compact('blogs'));
     }
     public function update(Request $req, int $id){
         $req->validate([
+            'title' => ['bail', 'required', 'string'],
+            'description' => ['bail', 'string', 'required'],
             'image' => ['bail', 'required', 'image'],
-            'name' => ['bail', 'string', 'required', 'max:255'],
-            'role' => ['bail', 'required', 'max:255'],
             'status' => ['required'],
         ]);
-        $oldImg =Blog::findOrFail($id);
+        $oldImg = Blog::findOrFail($id);
+        $oldDirectory = 'blog/'. str_replace(' ', '', $oldImg->title);
         if($oldImg->image && Storage::disk('public')->exists($oldImg->image)){ // Delete old image
             Storage::disk('public')->delete($oldImg->image);
-            Storage::disk('public')->deleteDirectory('aboutimages/'. str_replace(' ', '', $oldImg->name));
+            Storage::disk('public')->deleteDirectory($oldDirectory);
         }
-        $img = $req->file('image')->storeAs('aboutimages/' . str_replace(' ','',$req->input('name')), str_replace(' ', '', $req->input('name')) . '.jpg', 'public');
-       Blog::where('id', $id)->first()->update([
-            'image' => $img,
-            'name' => $req->input('name'),
-            'role' => $req->input('role'),
-            'status' => $req->input('status'),
-        ]);
-        return redirect()->route('about.image');
+        $img = $req->file('image')->storeAs('blog/' . str_replace(' ','',$req->input('title')), str_replace(' ', '', $req->input('title')) . '.jpg', 'public');
+        Blog::where('id', $id)->first()->update([
+                'image' => $img,
+                'title' => $req->input('title'),
+                'description' => $req->input('description'),
+                'status' => $req->input('status'),
+            ]);
+        return redirect()->route('blog');
     }
     public function history(Request $req){
         $search = $req->input('search');
         if($search){
-            $content =Blog::where('name', 'like', '%' . $search . '%')
+            $blogs = Blog::where('name', 'like', '%' . $search . '%')
             ->orWhere('value', 'like', '%' . $search . '%')
             ->orWhere('id', 'like', '%' . $search . '%')
             ->get();
         }
         else{
-            $content =Blog::where('status', 'unactive')->get();
+            $blogs = Blog::where('status', 'unactive')->get();
         }
-        return view('aboutimg.history', compact('content'));
+        return view('blogs.history', compact('blogs'));
     }
     public function softDelete(int $id){
-        $content =Blog::where('id', $id)->first();
-        $content->update([
+        $blog = Blog::where('id', $id)->first();
+        $blog->update([
             'status' => 'unactive',
         ]);
-        return redirect()->route('about.image');
+        return redirect()->route('blog');
     }
     public function restore(int $id){
         $content =Blog::where('id', $id)->first();
@@ -102,14 +104,14 @@ class BlogController extends Controller
         return redirect()->route('about.image');
     }
     public function delete(int $id){
-        $img =Blog::findOrFail($id);
+        $img = Blog::findOrFail($id);
         if($img->image && Storage::disk('public')->exists($img->image)){ // Delete old image
             Storage::disk('public')->delete($img->image);
-            Storage::disk('public')->deleteDirectory('aboutimages/'. str_replace(' ', '', $img->name));
+            Storage::disk('public')->deleteDirectory('aboutimages/'. str_replace(' ', '', $img->title));
         }
-       Blog::where('id', $id)->delete();
+        Blog::where('id', $id)->delete();
         $maxId =Blog::max('id');
-        DB::statement('ALTER TABLEBlogs AUTO_INCREMENT =' . $maxId + 1);
-        return redirect()->route('aboutimg.history');
+        DB::statement('ALTER TABLE Blogs AUTO_INCREMENT =' . $maxId + 1);
+        return redirect()->route('blog.history');
     }
 }
