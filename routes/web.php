@@ -2,7 +2,7 @@
 
 use App\Http\Middleware\UserVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 // Controllers
 use App\Http\Controllers\User\ProfileUserController;
@@ -25,6 +25,9 @@ use App\Http\Controllers\User\BlogController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Middleware\SuperAdminRoleMiddleware;
 use App\Http\Middleware\UserAuthMiddleware;
+
+// Models
+use App\Models\Blog;
 
 // Admin routes below
 Route::middleware(['auth:admin', SuperAdminRoleMiddleware::class.':3'])->group(function(){
@@ -130,7 +133,6 @@ Route::middleware(['auth:admin', AdminRoleMiddleware::class.':2,3'])->group(func
         Route::put('/blog/restore/{id}', 'restore')->name('blog.restore');
         Route::delete('/blog/delete/{id}', 'delete')->name('blog.delete');
     });
-    
 });
 
 // User register below
@@ -144,11 +146,13 @@ Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class]
     Route::get('/about', [AboutController::class, 'aboutView'])->name('about.user');
     Route::get('/blogs', [BlogController::class, 'blog'])->name('blog.user');
     // User blogs
-    Route::view('/blog-1', 'user/blogs/blog-1')->name('blog-1');
-    Route::view('/blog-2', 'user/blogs/blog-2')->name('blog-2');
-    Route::view('/blog-3', 'user/blogs/blog-3')->name('blog-3');
-    Route::view('/blog-4', 'user/blogs/blog-4')->name('blog-4');
-    Route::view('/blog-5', 'user/blogs/blog-5')->name('blog-5');
+    $blogs = Blog::where('status', 'active')->get();
+    foreach ($blogs as $blog) {
+        Route::view(
+            '/blog/' . Str::slug($blog->title, '-'),
+            'user.blogs.blog-' . Str::slug($blog->title, '-')
+        );
+    }
     // User logout
     Route::get('/logout/user', [AuthUserController::class, 'logout'])->name('logout.user');
     // User Profile

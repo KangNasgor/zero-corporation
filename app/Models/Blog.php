@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Blog extends Model
 {
@@ -16,8 +15,15 @@ class Blog extends Model
         'image',
         'blogpages_id',
         'status',
+        'paragraph1',
+        'paragraph2',
+        'paragraph3',
+        'paragraph4',
+        'paragraph5',
+        'paragraph6',
+        'paragraph7',
+        'paragraph8',
+        'paragraph9',
+        'paragraph10',
     ];
-    public function blogpage(): HasOne{
-        return $this->hasOne(Blogpage::class);
-    }
 }

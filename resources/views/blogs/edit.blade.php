@@ -12,6 +12,26 @@
                 <textarea name="description" placeholder="Description" required class="rounded-md px-2">{{ $blogs->description }}</textarea>
                 <label class="text-white text-xl">Image</label>
                 <input name="image" type="file" accept="image/*" required class="rounded-md px-2 text-white">
+                <label class="text-white text-xl">Paragraph-1</label>
+                <textarea name="paragraph1" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph1 }}</textarea>
+                <label class="text-white text-xl">Paragraph-2</label>
+                <textarea name="paragraph2" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph2 }}</textarea>
+                <label class="text-white text-xl">Paragraph-3</label>
+                <textarea name="paragraph3" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph3 }}</textarea>
+                <label class="text-white text-xl">Paragraph-4</label>
+                <textarea name="paragraph4" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph4 }}</textarea>
+                <label class="text-white text-xl">Paragraph-5</label>
+                <textarea name="paragraph5" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph5 }}</textarea>
+                <label class="text-white text-xl">Paragraph-6</label>
+                <textarea name="paragraph6" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph6 }}</textarea>
+                <label class="text-white text-xl">Paragraph-7</label>
+                <textarea name="paragraph7" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph7 }}</textarea>
+                <label class="text-white text-xl">Paragraph-8</label>
+                <textarea name="paragraph8" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph8 }}</textarea>
+                <label class="text-white text-xl">Paragraph-9</label>
+                <textarea name="paragraph9" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph9 }}</textarea>
+                <label class="text-white text-xl">Paragraph-10</label>
+                <textarea name="paragraph10" placeholder="Description" class="rounded-md px-2">{{ $blogs->paragraph10 }}</textarea>
                 <label class="text-white text-xl">Status</label>
                 <select name="status" required class="rounded-md px-2">
                     <option value="active">Active</option>

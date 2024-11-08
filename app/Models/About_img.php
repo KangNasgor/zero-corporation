@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class About_img extends Model
+class about_img extends Model
 {
     use HasFactory;
     protected $fillable = [
