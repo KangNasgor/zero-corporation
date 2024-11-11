@@ -1,8 +1,8 @@
 @extends('./../layout')
 @section('layout')
     <title>Create Blog</title>
-    <div>
-        <div class="h-fit flex flex-col justify-center items-center">
+    <div class="h-fit">
+        <div class="h-fit py-10 flex flex-col justify-center items-center">
             <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data" class="w-fit h-2/4 mx-auto pt-10 grid grid-cols-2 gap-3">
                 @csrf
                 <label class="text-white text-xl">Title</label>
@@ -41,6 +41,13 @@
                     <button class="w-2/4 mx-auto bg-slate-700 px-2 rounded-md text-white" type="reset">Reset</button>
                 </div>
             </form>
+            @if ($errors->any())
+            <div class="bg-red-600/50 border w-fit mx-auto border-red-600 py-9 px-5 rounded-md">
+                @foreach ($errors->all() as $error)
+                    <p class="text-sm text-white">{{ $error }}</p>
+                @endforeach
+            </div>
+            @endif
         </div>
     </div>
 @endsection

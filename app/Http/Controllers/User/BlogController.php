@@ -70,8 +70,8 @@ class BlogController extends Controller
             $paragraph = $record->{'paragraph' . $i} ?? null;
             if($paragraph) {
                 $paragraphs .= <<<HTML
-                    <div class="flex flex-col gap-10 w-11/12 mx-auto pb-36">
-                        <div class="text-white w-10/12 mx-auto">{$paragraph}</div>
+                    <div class="flex flex-col gap-10 w-11/12 mx-auto pb-28">
+                        <div class="text-white w-10/12 mx-auto">{$paragraph}</div> <!-- Loop to avoid null paragraph -->
                     </div>
                 HTML;
             }
@@ -85,7 +85,7 @@ class BlogController extends Controller
                     <p class="text-white/75 font-medium w-fit">By Leonard Alfareno</p>
                 </div>
             </div>
-            <div class="h-fit w-9/12 mx-auto pt-10 flex justify-center items-center">
+            <div class="h-fit w-9/12 mx-auto py-10 mb-32 flex justify-center items-center">
                 <div class="w-fit">
                     <img src="{{ asset('storage/$record->image') }}" alt="img" width="700" height="300" class="mx-auto">
                 </div>
@@ -95,7 +95,7 @@ class BlogController extends Controller
         BLADE;
 
         File::put($blogPath, $blog);
-        return redirect()->route('blog');
+        return view('blogs.blogs');
     }
     public function updateView(Request $req, int $id)
     {
@@ -117,12 +117,55 @@ class BlogController extends Controller
             Storage::disk('public')->deleteDirectory($oldDirectory);
         }
         $img = $req->file('image')->storeAs('blog/' . str_replace(' ', '', $req->input('title')), str_replace(' ', '', $req->input('title')) . '.jpg', 'public');
-        Blog::where('id', $id)->first()->update([
+        $record = Blog::where('id', $id)->first();
+            $record->update([
             'image' => $img,
             'title' => $req->input('title'),
             'description' => $req->input('description'),
             'status' => $req->input('status'),
+            'paragraph1' => $req->input('paragraph1'),
+            'paragraph2' => $req->input('paragraph2'),
+            'paragraph3' => $req->input('paragraph3'),
+            'paragraph4' => $req->input('paragraph4'),
+            'paragraph5' => $req->input('paragraph5'),
+            'paragraph6' => $req->input('paragraph6'),
+            'paragraph7' => $req->input('paragraph7'),
+            'paragprah8' => $req->input('paragprah8'),
+            'paragraph9' => $req->input('paragraph9'),
+            'paragraph10' => $req->input('paragraph10'),
         ]);
+        $blogName = 'blog-' . Str::slug($req->input('title'), '-') . '.blade.php';
+        $blogPath = resource_path('views/user/blogs/' . $blogName);
+        $paragraphs = '';
+        for($i = 1; $i <= 10 ; $i++){
+            $paragraph = $record->{'paragraph' . $i} ?? null;
+            if($paragraph) {
+                $paragraphs .= <<<HTML
+                    <div class="flex flex-col gap-10 w-11/12 mx-auto pb-28">
+                        <div class="text-white w-10/12 mx-auto">{$paragraph}</div> <!-- Loop to avoid null paragraph -->
+                    </div>
+                HTML;
+            }
+        }
+        $blog = <<<BLADE
+        @extends('user.user-layout')
+        @section('user-layout')
+            <div class="h-[40vh] flex justify-center items-center">
+                <div class="w-fit">
+                    <h1 class="text-white text-5xl font-semibold w-fit mx-auto mb-5"> $record->title </h1>
+                    <p class="text-white/75 font-medium w-fit">By Leonard Alfareno</p>
+                </div>
+            </div>
+            <div class="h-fit w-9/12 mx-auto py-10 mb-32 flex justify-center items-center">
+                <div class="w-fit">
+                    <img src="{{ asset('storage/$record->image') }}" alt="img" width="700" height="300" class="mx-auto">
+                </div>
+            </div>
+            $paragraphs
+        @endsection
+        BLADE;
+
+        File::put($blogPath, $blog);
         return redirect()->route('blog');
     }
     public function history(Request $req)

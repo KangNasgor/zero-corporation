@@ -1,8 +1,8 @@
 @extends('./../layout')
 @section('layout')
     <title>Edit Blog</title>
-    <div>
-        <div class="h-screen flex flex-col justify-center items-center">
+    <div class="h-fit">
+        <div class="h-fit flex flex-col justify-center items-center">
             <form action="{{ route('blog.edit', $blogs->id) }}" method="POST" enctype="multipart/form-data" class="w-fit h-2/4 mx-auto pt-10 grid grid-cols-2 gap-3">
                 @csrf
                 @method('PUT')
