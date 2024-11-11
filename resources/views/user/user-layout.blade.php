@@ -173,11 +173,10 @@
                 <div class="lg:mr-8 h-fit w-fit">
                     <h1 class="text-purple-200 font-semibold mb-2 w-fit">Legal</h1>
                     <div class="flex flex-col gap-1 w-fit">
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Terms of
+                        <a href="{{ route('legal.tos') }}" class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Terms of
                             service
-                        </p>
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Privacy
-                            policy</p>
+                        </a>
+                        <a href="{{ route('legal.privacy-policy') }}" class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Privacy policy</a>
                     </div>
                 </div>
             </div>

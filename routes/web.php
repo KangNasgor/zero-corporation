@@ -21,6 +21,7 @@ use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\About_imgController;
 use App\Http\Controllers\User\BlogController;
 use App\Http\Controllers\User\JobsController;
+use App\Http\Controllers\User\LegalController;
 
 // Middlewares
 use App\Http\Middleware\AdminRoleMiddleware;
@@ -149,6 +150,8 @@ Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class]
     Route::get('/jobs/front-end', [JobsController::class, 'frontend'])->name('jobs.frontend');
     Route::get('/jobs/back-end', [JobsController::class, 'backend'])->name('jobs.backend');
     Route::get('/jobs/ui-ux', [JobsController::class, 'uiux'])->name('jobs.uiux');
+    Route::get('/legal/terms-of-service', [LegalController::class, 'tos'])->name('legal.tos');
+    Route::get('/legal/privacy-policy', [LegalController::class, 'privacyPolicy'])->name('legal.privacy-policy');
     // User blogs
     $blogs = Blog::where('status', 'active')->get();
     foreach ($blogs as $blog) {

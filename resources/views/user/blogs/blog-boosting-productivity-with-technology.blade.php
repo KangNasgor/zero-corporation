@@ -11,5 +11,4 @@
             <img src="{{ asset('storage/blog/BoostingProductivitywithTechnology/BoostingProductivitywithTechnology.jpg') }}" alt="img" width="700" height="300" class="mx-auto">
         </div>
     </div>
-    
 @endsection
