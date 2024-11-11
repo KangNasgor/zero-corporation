@@ -20,6 +20,7 @@ use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\About_imgController;
 use App\Http\Controllers\User\BlogController;
+use App\Http\Controllers\User\JobsController;
 
 // Middlewares
 use App\Http\Middleware\AdminRoleMiddleware;
@@ -145,6 +146,9 @@ Route::middleware([UserAuthMiddleware::class, UserVerificationMiddleware::class]
     Route::get('/dashboard', [UserDashboardController::class, 'home'])->name('dashboard.user');
     Route::get('/about', [AboutController::class, 'aboutView'])->name('about.user');
     Route::get('/blogs', [BlogController::class, 'blog'])->name('blog.user');
+    Route::get('/jobs/front-end', [JobsController::class, 'frontend'])->name('jobs.frontend');
+    Route::get('/jobs/back-end', [JobsController::class, 'backend'])->name('jobs.backend');
+    Route::get('/jobs/ui-ux', [JobsController::class, 'uiux'])->name('jobs.uiux');
     // User blogs
     $blogs = Blog::where('status', 'active')->get();
     foreach ($blogs as $blog) {

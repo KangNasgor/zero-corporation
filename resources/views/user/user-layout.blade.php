@@ -71,6 +71,37 @@
             </div>
             <div class="h-px w-11/12 mx-auto bg-purple-300 mt-4"></div>
             <div class="pl-3 pt-3 mb-4">
+                <p class="text-sm text-purple-300 w-fit">Career</p>
+            </div>
+            <div class="flex flex-col gap-3 pl-1">
+                <a href="{{ route('jobs.frontend') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-laptop text-white"></i>
+                            <p class="text-white w-fit">Front-end Dev</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('jobs.backend') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-gear text-white"></i>
+                            <p class="text-white w-fit">Back-end Dev</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('jobs.uiux') }}">
+                    <div class=" flex justify-start w-11/12 mx-auto">
+                        <div class="flex items-center gap-2 text-md">
+                            <i class="fa-solid fa-wand-magic-sparkles text-white"></i>
+                            <p class="text-white w-fit">UI/UX</p>
+                        </div>
+                    </div>
+                </a>
+                </a>
+            </div>
+            <div class="h-px w-11/12 mx-auto bg-purple-300 mt-4"></div>
+            <div class="pl-3 pt-3 mb-4">
                 <p class="text-sm text-purple-300 w-fit">Account</p>
             </div>
             <div class="flex flex-col gap-3 pl-1">
@@ -131,12 +162,12 @@
                 <div class="lg:mr-8 h-fit w-fit">
                     <h1 class="text-purple-200 font-semibold mb-2 w-fit">Job</h1>
                     <div class="flex flex-col gap-1 w-fit">
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Front-end
-                            developer</p>
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Back-end
+                        <a href="{{ route('jobs.frontend') }}" class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Front-end
+                            developer</a>
+                        <a href="{{ route('jobs.backend') }}" class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">Back-end
                             developer
-                        </p>
-                        <p class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">UI/UX</p>
+                        </a>
+                        <a href="{{ route('jobs.uiux') }}" class="text-sm w-fit text-purple-300/70 cursor-pointer hover:text-purple-400/70">UI/UX</a>
                     </div>
                 </div>
                 <div class="lg:mr-8 h-fit w-fit">
