@@ -1,7 +1,7 @@
 @extends('user.user-layout')
 @section('user-layout')
     <div class="h-fit pb-36 w-10/12 mx-auto">
-        <h1 class="text-white text-3xl font-semibold md:text-4xl pt-10 mb-24">Terms of Service</h1>
+        <h1 class="text-white text-3xl font-semibold md:text-4xl pt-10 mb-24 text-center">Terms of Service</h1>
         <p class="text-white mb-5">
             Welcome to ZERO Corp's website. By accessing or using our website, you agree to
             comply with and be bound by these Terms of Service. Please read them carefully before using our
@@ -72,7 +72,7 @@
             <div class="text-white">
                 <h1>9. Contact Information</h1>
                 <p>
-                    For any questions or concerns regarding these Terms, please contact us at <a href="mailto:rxyz643201@gmail.com">rxyz643201@gmail.com</a>.
+                    For any questions or concerns regarding these Terms, please contact us at <a class="text-slate-300 underline decoration-solid" href="mailto:rxyz643201@gmail.com">rxyz643201@gmail.com</a>.
                 </p>
             </div>
         </div>
